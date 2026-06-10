@@ -124,7 +124,7 @@ def clean_notebook() -> NotebookBuilder:
         "ax.plot(lims, lims, 'k--', alpha=0.5, label='no shrinkage')\n"
         "ax.set(xlabel='raw mean', ylabel='posterior theta mean',\n"
         "       title='Shrinkage (colour = #replicates)')\n"
-        "ax.legend(); plt.colorbar(ax.collections[0], ax=ax, label='n_reps'); plt.tight_layout()"
+        "ax.legend(); plt.colorbar(ax.collections[0], ax=ax, label='n_reps')"
     )
 
     nb.md(

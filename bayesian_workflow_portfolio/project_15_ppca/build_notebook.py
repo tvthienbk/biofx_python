@@ -59,7 +59,7 @@ def clean_notebook() -> NotebookBuilder:
         "fig, ax = plt.subplots(figsize=(5,4))\n"
         "im = ax.imshow(np.corrcoef(X.T), cmap='RdBu_r', vmin=-1, vmax=1)\n"
         "ax.set_title('Empirical correlation across the D dims\\n(structure = shared factors)')\n"
-        "plt.colorbar(im, ax=ax, shrink=0.8); plt.tight_layout()"
+        "plt.colorbar(im, ax=ax, shrink=0.8)"
     )
 
     nb.md(
@@ -132,7 +132,6 @@ def clean_notebook() -> NotebookBuilder:
         "for ax, M, ttl in zip(axes, [C_emp, C_hat, data['C_true']],\n"
         "                      ['empirical cov','reconstructed WWᵀ+σ²I','true C']):\n"
         "    im = ax.imshow(M, cmap='viridis'); ax.set_title(ttl); plt.colorbar(im, ax=ax, shrink=0.7)\n"
-        "plt.tight_layout()\n"
         "print('reconstruction rel Frobenius error =',\n"
         "      round(np.linalg.norm(C_hat-data['C_true'])/np.linalg.norm(data['C_true']),3))"
     )

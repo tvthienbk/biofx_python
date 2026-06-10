@@ -72,14 +72,24 @@ def fit(data: dict, draws: int = 600, tune: int = 1000, chains: int = 2,
 
 
 def build_ar1_model(data: dict) -> pm.Model:
-    """Stationary AR(1) comparator: y_t = mu + rho*(y_{t-1}-mu) + e_t."""
+    """Stationary AR(1) comparator: y_t = mu + rho*(y_{t-1}-mu) + e_t.
+
+    We write the *full* likelihood over all T points: y_0 is drawn from the
+    stationary marginal N(mu, sigma/sqrt(1-rho^2)) and y_t | y_{t-1} for t>=1
+    from the transition. Using all T observations (rather than only the T-1
+    conditional terms) keeps the pointwise log-likelihood length equal to the
+    local-level model's, so ``az.compare``/LOO is valid across the two models.
+    """
     y = np.asarray(data["y"], dtype=float)
     with pm.Model() as model:
         mu = pm.Normal("mu", mu=float(y.mean()), sigma=5.0)
-        rho = pm.Uniform("rho", lower=-1.0, upper=1.0)
+        rho = pm.Uniform("rho", lower=-0.99, upper=0.99)
         sigma = pm.HalfNormal("sigma", sigma=1.0)
-        # likelihood for t >= 1 conditional on previous observation
-        pm.Normal("y_obs", mu=mu + rho * (y[:-1] - mu), sigma=sigma, observed=y[1:])
+        # Per-timepoint conditional mean and sd; t=0 uses the stationary marginal.
+        mu_t = pm.math.concatenate([[mu], mu + rho * (y[:-1] - mu)])
+        sd0 = sigma / pm.math.sqrt(1.0 - rho ** 2)
+        sd_t = pm.math.concatenate([[sd0], pm.math.ones(len(y) - 1) * sigma])
+        pm.Normal("y_obs", mu=mu_t, sigma=sd_t, observed=y)
     return model
 
 
