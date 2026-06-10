@@ -1,0 +1,6 @@
+# Generated artifacts
+*.npz
+sbc_ranks.png
+**/data/*.csv
+.ipynb_checkpoints/
+__pycache__/

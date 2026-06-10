@@ -1,0 +1,15 @@
+name: bayes-workflow
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pymc=5.28
+  - arviz=0.23
+  - numpy>=2.0
+  - scipy>=1.13
+  - pandas>=2.0
+  - matplotlib>=3.8
+  - nbformat>=5.10
+  - jupyter
+  - pytest
+  - pip
