@@ -192,8 +192,10 @@ def clean_notebook() -> NotebookBuilder:
         "print(f'P(beta1 > 0 | data) = {float(np.mean(b1 > 0)):.3f}')"
     )
     nb.md(
-        "**Conclusion (for a collaborator).** Expression rises ~2.2-fold per "
-        "standard-deviation increase in $x$, and the effect is essentially certain. "
+        "**Conclusion (for a collaborator).** Expression rises ~2-fold per "
+        "standard-deviation increase in $x$ (posterior median ~2.0, 94% interval "
+        "~1.8–2.3, comfortably covering the true 2.2), and the effect is "
+        "essentially certain. "
         "Crucially we used the **Negative-Binomial**: a Poisson would have reported "
         "a falsely precise effect and badly underestimated count variability. See "
         "`summary_onepager.md`.",

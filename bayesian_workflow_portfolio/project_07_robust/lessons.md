@@ -46,9 +46,11 @@ is itself a diagnostic*: it is the model telling you outliers are present.
 ### 2.3 Convergence is not adequacy (again)
 
 As in Project 06, the non-robust model converges perfectly. $\hat R$ and ESS are
-blind to the fact that the line is wrong. The tells are in the *estimates* (inflated
-$\sigma$, dragged slope), the *fitted line overlay*, and the *LOO comparison* —
-never in the convergence diagnostics.
+blind to the fact that the fit is inadequate. The tells are in the *estimates*
+(inflated $\sigma$ ~3 vs clean 0.6, and a slope ~6× more uncertain than the robust
+fit's; with these balanced low-leverage outliers the slope *mean* is not itself
+dragged, but with one-sided/high-leverage outliers it would be), the *fitted line
+overlay*, and the *LOO comparison* — never in the convergence diagnostics.
 
 ### 2.4 Don't compare the Student-t scale to the Normal SD
 

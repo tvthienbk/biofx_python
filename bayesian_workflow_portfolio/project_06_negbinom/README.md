@@ -129,9 +129,11 @@ This is where the misspecification becomes visible.
   far **too narrow** — they cannot reach the observed heavy tail.
 - The NB's replicated distributions cover the observed spread.
 - We quantify it: compute the **posterior-predictive variance** for each model and
-  compare to the observed variance. The Poisson's predicted variance roughly
-  equals its predicted mean (~10), an order of magnitude below the observed
-  variance (~150). The NB matches.
+  compare to the observed variance. Because the Poisson locks each point to
+  $\operatorname{Var}(y_i)=\mu_i$, its aggregate predicted variance (~70, raised
+  above the per-point ~11 only by the spread of $\mu$ across samples) still falls
+  well short of the observed variance (~150). The NB's free dispersion pushes its
+  predicted variance to ~280, comfortably bracketing the data.
 
 The portable lesson: **convergence diagnostics check the sampler; posterior
 predictive checks check the model.** You need both, and only the PPC catches
@@ -162,9 +164,10 @@ accuracy.
 ## 8. Step 8 — Decision & communication
 
 The effect a collaborator wants is the **fold-change per unit $x$**:
-$e^{\beta_1}\approx 2.2$, with a 94% interval, and $P(\beta_1>0)\approx 1$.
+$e^{\beta_1}\approx 2.0$ (posterior median; 94% interval ~1.8–2.3, covering the
+true 2.2), with $P(\beta_1>0)\approx 1$.
 
-The decision-level message is twofold: (1) expression rises ~2.2-fold per SD of
+The decision-level message is twofold: (1) expression rises ~2-fold per SD of
 $x$; (2) we used the NB, so the reported uncertainty is honest. A Poisson would
 have produced a *falsely precise* effect and a wild underestimate of count
 variability — dangerous if the next step sizes an experiment on that variance.

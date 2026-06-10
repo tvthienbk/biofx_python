@@ -21,15 +21,15 @@ which would mislead any power calculation for the next experiment.
 ## What we found
 
 - **Expression rises with $x$.** Each one standard-deviation increase in $x$
-  multiplies expression by about **2.2-fold** (94% credible range roughly
-  1.9–2.6).
+  multiplies expression by about **2-fold** (posterior median ~2.0, 94% credible
+  range roughly 1.8–2.3).
 - **The effect is essentially certain:** $P(\text{effect} > 0)\approx 1.00$.
 - **The counts are genuinely noisy** (strong overdispersion), and our uncertainty
   reflects that honestly.
 
 ## What this means for the bench
 
-- Treat the ~2.2-fold-per-SD effect as **real and robust** — it does not depend on
+- Treat the ~2-fold-per-SD effect as **real and robust** — it does not depend on
   our variance-modeling choices.
 - When sizing the **next experiment**, use the Negative-Binomial variance, not the
   Poisson's: the true count-to-count variability is much larger, so you need more
@@ -45,6 +45,6 @@ which would mislead any power calculation for the next experiment.
 
 ## Bottom line
 
-Expression increases ~2.2-fold per SD of $x$, certainly and robustly. The headline
+Expression increases ~2-fold per SD of $x$, certainly and robustly. The headline
 caution is methodological: **use a Negative-Binomial, not a Poisson**, or you will
 understate the noise and over-trust the precision.

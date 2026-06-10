@@ -5,9 +5,10 @@ prior worth stress-testing is the prior on nu. nu controls tail weight:
 small nu => heavy tails (very robust, outliers down-weighted); large nu => the
 Student-t approaches a Normal (non-robust, outliers dominate again).
 
-We refit the same outlier-contaminated data under three priors on nu, plus a
-'nu fixed large' variant that deliberately defeats robustness, and compare the
-slope beta (which should be dragged toward the Normal estimate as nu is forced up):
+We refit the same outlier-contaminated data under three priors on nu and compare
+the slope beta and the posterior nu. With 6 clear outliers a soft Normal-leaning
+prior cannot force nu large, so beta stays robust; the genuine robustness-killer is
+a HARD constraint (nu fixed large), shown in the broken notebook, not a soft prior:
 
   * Heavy-tail-friendly  Gamma(2, 0.5)   mean 4   -> permits heavy tails.
   * Default               Gamma(2, 0.1)  mean 20  -> flexible.
@@ -54,9 +55,11 @@ def main() -> None:
                   f"{row['sd']:6.3f}  [{row['hdi_3%']:6.3f}, {row['hdi_97%']:6.3f}]")
         print()
     print("Interpretation: while the nu prior PERMITS small nu, the data pull nu "
-          "low (heavy tails) and the slope beta stays near the clean truth 2.0. A "
-          "prior that forces nu large drags beta toward the Normal (outlier-biased) "
-          "estimate. The fix for a non-robust fit is to LET nu be small, not fix it.")
+          "low (heavy tails) and the slope beta stays near the clean truth 2.0 with "
+          "a tight interval across all three priors. Even the Normal-leaning prior "
+          "only lifts nu to ~2.5 (still robust), so beta barely moves; the soft "
+          "prior cannot defeat 6 clear outliers. The real robustness-killer is a "
+          "HARD constraint (nu fixed large), not a soft prior — let nu be free.")
 
 
 if __name__ == "__main__":

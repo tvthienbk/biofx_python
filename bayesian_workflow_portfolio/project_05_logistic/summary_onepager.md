@@ -14,7 +14,7 @@ bind / no-bind, and fit a logistic regression.
 - **Binding clearly increases with $x$.** The probability that the effect is
   positive is essentially 1 ($P(\beta>0\mid\text{data})\approx 1.00$). Each one
   standard-deviation increase in $x$ multiplies the **odds** of binding by roughly
-  4 (95% credible range about 3–9).
+  5 (94% credible range about 3–9).
 - **The half-maximal point** — the $x$ at which binding is a coin flip — sits near
   the *mean* covariate value, with a fairly tight credible interval. Below it
   binding is unlikely; above it, increasingly likely.

@@ -79,8 +79,9 @@ that the data only weakly constrain.
 ### 3.1 The Poisson looked great until the PPC
 
 While building, the Poisson fit produced clean diagnostics and a sensible-looking
-$\beta_1$. It was only the variance comparison (predicted ~10 vs observed ~150)
-that exposed the problem. This is the entire pedagogical point, encountered live.
+$\beta_1$. It was only the variance comparison (Poisson predicted ~70 vs observed
+~150, while the NB predicted ~280) that exposed the problem. This is the entire
+pedagogical point, encountered live.
 
 ### 3.2 The NB prior tail can blow up the simulation
 

@@ -14,12 +14,17 @@ outliers.
 divergences), so it is tempting to accept it. But the Normal log-likelihood
 penalizes residuals *quadratically*, so a handful of far points dominate. Two
 visible consequences:
-- $\sigma$ is **hugely inflated** (it must explain the outliers as ordinary noise);
-- the slope $\beta$ is **dragged off the truth** toward the outlier mass.
+- $\sigma$ is **hugely inflated** (~3 vs the clean 0.6, a 5× inflation — it must
+  explain the outliers as ordinary noise);
+- the line becomes **far more uncertain**: $\beta$'s posterior SD balloons to ~0.37,
+  roughly 6× the Student-t's ~0.06. (These outliers are balanced and low-leverage by
+  design, so the Normal slope *mean* stays near the truth ~2.0; the damage is to its
+  precision and its noise estimate, not a tilted mean line. With one-sided or
+  high-leverage outliers the mean would shift too.)
 
 **Diagnostic.**
 - Compare the estimated $\sigma$ (~3) to the true clean noise (0.6) — a 5× inflation.
-- Overlay the fitted line on the scatter: it tilts toward the outliers.
+- Compare the Normal slope SD (~0.37) to the Student-t's (~0.06) — a 6× wider band.
 - A **LOO comparison** against a Student-t model: the t wins by many `dse`, and
   the outliers show up as high Pareto-$k$ points under the *Normal*.
 
@@ -36,9 +41,9 @@ pm.StudentT('y', nu=nu, mu=mu, sigma=sigma, observed=y)
 **Code.** `pm.StudentT('y', nu=100.0, mu=mu, sigma=sigma, observed=y)`.
 
 **Symptom.** This *looks* robust — it uses a Student-t — but at $\nu=100$ the
-Student-t is numerically indistinguishable from a Normal. The fit is still
-dragged, $\sigma$ still inflated. The student has paid for robustness and received
-none.
+Student-t is numerically indistinguishable from a Normal. The estimates match the
+Normal fit's: $\sigma$ still inflated (~3) and the line still over-uncertain
+($\beta$ SD ~0.37). The student has paid for robustness and received none.
 
 **Diagnostic.** Note that $\nu=100$ is hard-coded, not estimated. Recall the
 limit: $t_\nu\to\text{Normal}$ as $\nu\to\infty$, and convergence is already

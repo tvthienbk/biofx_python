@@ -23,9 +23,9 @@ We refit under three `tau0` values and report, for each:
 
 | tau0 setting | est nonzero | max \|noise beta\| |
 |--------------|-------------|--------------------|
-| aggressive tau0=0.05 | [2.50, -1.96, 1.27] | 0.063 |
-| default tau0=0.10 | [2.50, -1.95, 1.27] | 0.068 |
-| weak tau0=0.50 | [2.50, -1.95, 1.27] | 0.078 |
+| aggressive tau0=0.05 | [2.50, -1.95, 1.27] | ~0.066 |
+| default tau0=0.10 | [2.49, -1.96, 1.27] | ~0.075 |
+| weak tau0=0.50 | [2.49, -1.96, 1.27] | ~0.072 |
 
 ## Interpretation
 
@@ -35,11 +35,13 @@ We refit under three `tau0` values and report, for each:
    is the reassuring headline: the *findings* (which predictors matter, how much)
    do not hinge on the `tau0` choice.
 
-2. **The shrinkage of the noise coefficients tightens as `tau0` shrinks.** The
-   largest spurious coefficient falls from 0.078 (weak) to 0.063 (aggressive). The
-   global scale is doing exactly its job: smaller `tau0` pushes the irrelevant
-   coefficients harder toward zero. The effect here is modest because even the weak
-   prior already shrinks noise well below the signal magnitudes.
+2. **The noise coefficients stay heavily shrunk across all `tau0`.** The largest
+   spurious coefficient stays around ~0.07 (well below the ~1.4–2.5 signals) for
+   every setting, with only small, seed-level wiggles between the three priors
+   rather than a clean monotone trend. The effect of `tau0` on noise shrinkage is
+   modest here because even the weak prior already crushes the noise well below the
+   signal magnitudes; the global scale's influence would be far more visible with
+   weaker signals or a higher noise floor.
 
 3. **There is a sweet spot — don't crank `tau0` to zero.** In this dataset the
    three signals are strong (|coef| 1.4–2.5), so even aggressive shrinkage spares

@@ -138,17 +138,25 @@ def clean_notebook() -> NotebookBuilder:
         "print(az.summary(idata_t, var_names=['alpha', 'beta', 'sigma', 'nu']))"
     )
     nb.md(
-        "**Read it now:** the Normal $\\sigma$ is hugely inflated (it must 'explain' "
-        "the outliers as ordinary noise), and its slope is dragged off the truth. "
-        "The Student-t recovers $\\alpha\\approx1$, $\\beta\\approx2$, a small scale, "
-        "and a small $\\nu$ (heavy tails) — it has *identified* the outliers as tail "
-        "events.",
+        "**Read it now:** the Normal $\\sigma$ is hugely inflated (~3 vs the clean "
+        "0.6 — it must 'explain' the outliers as ordinary noise), and as a direct "
+        "consequence its slope/intercept become **far more uncertain** ($\\beta$ has "
+        "an SD ~6× the Student-t's). Because these outliers are balanced and "
+        "low-leverage by design, the Normal's slope *mean* is not strongly biased — "
+        "the damage is to its precision and its noise estimate. The Student-t "
+        "recovers $\\alpha\\approx1$, $\\beta\\approx2$ with tight intervals, a small "
+        "scale, and a small $\\nu$ (heavy tails) — it has *identified* the outliers "
+        "as tail events.",
     )
 
     nb.md(
         "## Step 6 — Posterior predictive & the fitted lines",
-        "Overlay both fitted lines on the data. The Normal line tilts toward the "
-        "outliers; the Student-t line tracks the clean trend.",
+        "Overlay both fitted lines on the data. The Normal fit is far less certain "
+        "(a much wider posterior band, driven by its inflated $\\sigma$); the "
+        "Student-t line tracks the clean trend tightly. With these balanced, "
+        "low-leverage outliers the Normal *mean* line is close to the truth too — "
+        "the cost of ignoring robustness shows up as ballooning uncertainty and a "
+        "5× inflated noise scale rather than a tilted mean line.",
     )
     nb.code(
         "tx = np.linspace(x.min(), x.max(), 50)\n"
@@ -161,10 +169,10 @@ def clean_notebook() -> NotebookBuilder:
         "ax.scatter(x[~out], y[~out], color='#4C72B0', s=25, label='clean')\n"
         "ax.scatter(x[out], y[out], color='#C44E52', s=45, marker='X', label='outlier')\n"
         "mn, _ = line(idata_norm); mt, _ = line(idata_t)\n"
-        "ax.plot(tx, mn, color='#C44E52', lw=2, label='Normal fit (dragged)')\n"
+        "ax.plot(tx, mn, color='#C44E52', lw=2, label='Normal fit (noisy/uncertain)')\n"
         "ax.plot(tx, mt, color='#55A868', lw=2, label='Student-t fit (robust)')\n"
         "ax.plot(tx, data['truth']['alpha']+data['truth']['beta']*tx, 'k--', label='truth')\n"
-        "ax.set(xlabel='x', ylabel='y', title='Normal dragged by outliers; Student-t robust')\n"
+        "ax.set(xlabel='x', ylabel='y', title='Normal destabilized by outliers; Student-t robust')\n"
         "ax.legend(); plt.tight_layout()"
     )
     nb.code(
@@ -210,7 +218,8 @@ def clean_notebook() -> NotebookBuilder:
         "$y\\approx 1.0 + 2.0\\,x$, recovered cleanly despite ~10% gross outliers. A "
         "small $\\nu$ tells us the outliers are real and were correctly "
         "down-weighted. A naive least-squares / Normal fit would have reported a "
-        "tilted line and a wildly inflated noise level. See `summary_onepager.md`.",
+        "wildly inflated noise level and a much less certain line (here ~6× the "
+        "slope SD). See `summary_onepager.md`.",
     )
     return nb
 

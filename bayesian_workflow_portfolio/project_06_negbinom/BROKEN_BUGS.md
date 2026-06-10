@@ -16,9 +16,12 @@ gets the *mean* roughly right and the *variance* catastrophically wrong.
 
 **Diagnostic.** Two things expose it:
 - A **posterior-predictive check**: replicated count distributions are far too
-  narrow; predicted variance ($\approx$ predicted mean $\approx 10$) is an order
-  of magnitude below the observed variance ($\approx 150$).
-- **LOO comparison** against an NB model: the NB wins by many `dse`.
+  narrow. The Poisson's aggregate predicted variance ($\approx 70$, inflated above
+  the per-point $\operatorname{Var}=\mu\approx 11$ only by spread in $\mu$ across
+  samples) sits well below the observed variance ($\approx 150$), while the NB's
+  predicted variance ($\approx 280$) comfortably brackets it.
+- **LOO comparison** against an NB model: the NB wins by many `dse`
+  ($\Delta\text{elpd}\approx 300$, dse $\approx 70$).
 
 **Fix.** Use a Negative-Binomial likelihood with a free dispersion:
 ```python

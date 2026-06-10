@@ -118,12 +118,16 @@ Both models converge ($\hat R\approx1$, healthy ESS, zero divergences). As in
 Project 06, **convergence is not adequacy**: the Normal model samples perfectly
 and is still wrong. The tell is in the *estimates*:
 
-- The Normal's $\sigma$ is **hugely inflated** — it must absorb the outliers as
-  ordinary noise.
-- The Normal's slope is dragged off the truth (toward whichever side the net
-  outlier mass pulls).
-- The Student-t recovers $\alpha\approx1$, $\beta\approx2$, a small scale, and a
-  **small $\nu$** — it has identified the heavy tails.
+- The Normal's $\sigma$ is **hugely inflated** (~3 vs the clean 0.6) — it must
+  absorb the outliers as ordinary noise.
+- As a result the Normal's line becomes **far more uncertain**: $\beta$'s posterior
+  SD balloons to ~0.37, about 6× the Student-t's. Because these outliers are
+  *balanced and low-leverage by construction*, the Normal slope *mean* stays near
+  the truth (~2.0); the damage here is to precision and the noise estimate. (With
+  one-sided or high-leverage outliers the mean would itself be dragged off-truth —
+  the general danger the robust model guards against.)
+- The Student-t recovers $\alpha\approx1$, $\beta\approx2$ with tight intervals, a
+  small scale, and a **small $\nu\approx1.1$** — it has identified the heavy tails.
 
 A small posterior $\nu$ is itself a diagnostic: it is the model *telling you* the
 data have outliers.
@@ -132,9 +136,12 @@ data have outliers.
 
 ## 6. Step 6 — Posterior predictive & the fitted lines
 
-The clearest visual: overlay both fitted lines on the scatter. The Normal line
-tilts toward the outliers and the Student-t line tracks the clean trend. We also
-run `az.plot_ppc` for the Student-t to confirm the replicated responses cover the
+The clearest visual: overlay both fitted lines on the scatter. The Normal fit
+carries a much wider posterior band (driven by its inflated $\sigma$) while the
+Student-t line tracks the clean trend tightly; with these balanced low-leverage
+outliers the two *mean* lines are similar, so the visible contrast is in the
+uncertainty and the noise scale rather than a tilted mean line. We also run
+`az.plot_ppc` for the Student-t to confirm the replicated responses cover the
 data (including the tails) without absurdity.
 
 ---
@@ -161,8 +168,9 @@ below 0.6 — comparing it to the Normal SD would be apples-to-oranges.
 
 Report the calibration slope and intercept with credible intervals, plus the
 estimated $\nu$ as an outlier indicator. The decision-level message: the line is
-$y\approx 1.0+2.0x$, recovered cleanly despite ~10% gross outliers, and a naive
-least-squares fit would have reported a tilted line and an inflated noise level.
+$y\approx 1.0+2.0x$, recovered cleanly and *precisely* despite ~10% gross
+outliers, whereas a naive least-squares fit would have reported a wildly inflated
+noise level and a much less certain line (here ~6× the slope SD).
 
 `summary_onepager.md` carries the non-technical version.
 

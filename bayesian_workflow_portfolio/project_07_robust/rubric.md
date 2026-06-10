@@ -10,7 +10,7 @@ Total: 100 points across the eight workflow steps. The project-specific emphasis
 | 3 | Prior predictive check | 8 | Simulates Student-t-implied responses; confirms heavy-tailed but plausible. |
 | 4 | Inference / NUTS | 8 | Sensible draws/tune/chains; fixed seed; notes both converge. |
 | 5 | Diagnostics | 10 | $\hat R$, ESS, divergences; recognizes convergence ≠ adequacy; reads inflated Normal $\sigma$ and small Student-t $\nu$ as tells. |
-| 6 | Posterior predictive | 14 | Overlaid fitted lines (Normal dragged vs t robust); `plot_ppc` for the t. (Signature skill.) |
+| 6 | Posterior predictive | 14 | Overlaid fitted lines (Normal over-uncertain / inflated band vs t robust); `plot_ppc` for the t. (Signature skill.) |
 | 7 | Model comparison (LOO) | 20 | `az.compare` with `ic='loo'`; t rank 0; interprets `elpd_diff`/`dse`; notes outliers as high Pareto-$k$ under Normal; recovers clean $(\alpha,\beta)$; correctly does NOT compare $\sigma$ to the Normal SD. (Signature skill.) |
 | 8 | Decision & communication | 12 | Robust slope/intercept with intervals; $\nu$ as outlier indicator; warns least-squares would mislead. |
 | — | Reproducibility & code quality | 6 | Scripts run clean; notebook executes top-to-bottom; shared helpers reused. |

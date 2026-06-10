@@ -26,8 +26,11 @@ that the robust model genuinely describes the data better.
 - **The outliers were real and were handled:** the model's tail parameter came out
   small, which is its way of saying "there are genuine outliers here," and it
   down-weighted them correctly.
-- **A naive least-squares fit would have misled you:** it reported a tilted slope
-  and a noise level several times too large.
+- **A naive least-squares fit would have misled you:** it reported a noise level
+  several times too large (~3 vs the true ~0.6) and a much less certain line — on
+  this dataset its slope SD was about 6× the robust fit's. (Had the bad points sat
+  on one side or at the extremes of $x$, least squares would also have tilted the
+  slope itself.)
 
 ## What this means for the bench
 
