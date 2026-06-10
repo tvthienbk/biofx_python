@@ -9,12 +9,15 @@ calibrate just a couple of coefficients, as the brief allows. The logic:
   3. Fit the (non-centered) horseshoe; obtain L posterior draws of beta.
   4. Record the rank of each chosen coefficient's true value among the L draws.
 
-Calibrated inference => ranks uniform. Because horseshoe priors are heavy-tailed
-and the model is high-dimensional, we draw the prior via PyMC's own
-sample_prior_predictive on the model (so the simulator and model share EXACTLY the
-same prior, the key to a valid SBC), use a small P, few sims, and short chains.
+Calibrated inference => ranks uniform. The simulator draws the prior DIRECTLY in
+numpy, reproducing exactly the regularized-horseshoe prior in build_model (so the
+simulator and model share the same prior, the key to a valid SBC) without
+recompiling a PyMC model each iteration. Because horseshoe priors are heavy-tailed
+we bound the extreme upper tails of the scale parameters so a single pathological
+draw does not blow up the runtime; SBC validates the machinery over a
+representative slice of parameter space. We use a small P, few sims, short chains.
 
-This runs in ~1-2 minutes. SBC here certifies the inference machinery on the
+This runs in ~1.5 minutes. SBC here certifies the inference machinery on the
 sparse-coefficient targets; sparsity recovery itself is checked in test_recovery.
 """
 from __future__ import annotations

@@ -36,7 +36,11 @@ slab, regularized local scale, non-centered z). Drawing the prior in numpy rathe
 than rebuilding a PyMC model each iteration keeps simulator and model consistent
 while running far faster. This is what makes the SBC
 valid — drawing $\beta$ from any approximation of the prior would bias the ranks.
-We use a small $P$ and few simulations to keep the run to ~1–2 minutes; SBC here
+Because the horseshoe scales are heavy-tailed (HalfCauchy), we **bound their
+extreme upper tails** so that a single pathological draw does not dominate the
+runtime; the model fits the same bounded draws, so simulator and model stay
+consistent, and SBC validates the machinery over a representative slice.
+We use a small $P$ and few simulations to keep the run to ~1.5 minutes; SBC here
 certifies the inference machinery on the coefficient targets, while *sparsity
 recovery* itself is checked separately in `test_recovery.py`.
 
