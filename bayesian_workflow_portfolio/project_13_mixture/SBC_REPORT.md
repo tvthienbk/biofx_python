@@ -30,13 +30,14 @@ histogram saved to `sbc_ranks.png`):
 
 ```
 SBC over 18 simulations (N=100, draws=150/chain x2)
-   separation: chi2=..., p=...,  uniform=True/False
-        w[1]:  chi2=..., p=...,  uniform=...
-       sigma:  chi2=..., p=...,  uniform=...
+   separation: chi2=6.89, p=0.441, uniform=True
+         w[1]: chi2=3.33, p=0.853, uniform=True
+        sigma: chi2=2.44, p=0.931, uniform=True
 ```
 
 (Run the script to regenerate the exact numbers; they print to stdout and the
-rank histograms are written to `sbc_ranks.png`.)
+rank histograms are written to `sbc_ranks.png`. All three identifiable quantities
+pass the 8-bin chi-square uniformity test at the smoke-level resolution above.)
 
 ## How to read it
 

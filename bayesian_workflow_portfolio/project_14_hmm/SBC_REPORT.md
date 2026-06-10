@@ -29,12 +29,13 @@ Output of `python3 sbc.py` (chi-square uniformity, 6 bins; histogram saved to
 
 ```
 SBC over 8 simulations (T=100, draws=120/chain x2)
-   separation: chi2=..., p=..., uniform=...
-        sigma: chi2=..., p=..., uniform=...
+   separation: chi2=4.00, p=0.549, uniform=True
+        sigma: chi2=8.50, p=0.131, uniform=True
 ```
 
-Run the script to regenerate the exact numbers (printed to stdout; histograms in
-`sbc_ranks.png`).
+Both identifiable emission quantities pass the 6-bin chi-square uniformity test at
+this smoke-level resolution. Run the script to regenerate the exact numbers
+(printed to stdout; histograms in `sbc_ranks.png`).
 
 ## How to read it
 

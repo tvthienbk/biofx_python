@@ -22,7 +22,7 @@ the most important in applied Bayesian modelling.
 | notebooks | `python3 build_notebook.py` | < 1 s |
 | validate | `python3 ../shared/validate_notebooks.py notebook.ipynb notebook_broken.ipynb` | < 1 s |
 | test | `python3 -m pytest test_recovery.py -q` | ~ 34 s |
-| SBC | `python3 sbc.py` (30 sims, N=60) | ~ 2–3 min |
+| SBC | `python3 sbc.py` (12 sims, N=50) | ~ 2–3 min |
 | prior sweep | `python3 prior_sensitivity.py` (3 fits) | ~ 2 min |
 
 Sampling: `draws=500, tune=1000, chains=2, target_accept=0.9`, fixed seed,

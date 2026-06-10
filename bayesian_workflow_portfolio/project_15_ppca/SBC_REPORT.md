@@ -10,7 +10,7 @@ of this project.) Recipe:
 
 1. Draw `sigma` from its `HalfNormal(1)` prior and `W, mu, z` from their priors.
 2. Simulate an `N x D` dataset (`N=50, D=6, K=2`).
-3. Refit the `K=2` model with a small sampler (`draws=200, tune=400, chains=2`).
+3. Refit the `K=2` model with a small sampler (`draws=150, tune=300, chains=2`).
 4. Record the **rank** of the true `sigma` among the posterior `sigma` draws.
 
 Calibrated inference ⇒ ranks uniform on `{0, …, L}`. We use `N_SIMS = 12`
@@ -23,11 +23,12 @@ Output of `python3 sbc.py` (chi-square uniformity, 8 bins; histogram saved to
 
 ```
 SBC over 12 simulations (N=50, D=6, K=2)
-  sigma: chi2=..., dof=7, p=..., uniform=...
+  sigma: chi2=4.00, dof=7, p=0.780, uniform=True
 ```
 
-Run the script to regenerate the exact numbers (printed to stdout; histogram in
-`sbc_ranks.png`).
+The `sigma` ranks pass the 8-bin chi-square uniformity test at this smoke-level
+resolution. Run the script to regenerate the exact numbers (printed to stdout;
+histogram in `sbc_ranks.png`).
 
 ## How to read it
 

@@ -22,7 +22,7 @@ The lightest of the four advanced projects — both models sample in seconds.
 | notebooks | `python3 build_notebook.py` | < 1 s |
 | validate | `python3 ../shared/validate_notebooks.py notebook.ipynb notebook_broken.ipynb` | < 1 s |
 | test | `python3 -m pytest test_recovery.py -q` | ~ 10 s |
-| SBC | `python3 sbc.py` (80 sims) | ~ 2–3 min |
+| SBC | `python3 sbc.py` (45 sims) | ~ 2–3 min |
 | prior sweep | `python3 prior_sensitivity.py` (3 fits) | ~ 30 s |
 
 Sampling: discrete model `draws=1000, tune=1000, chains=4` (NUTS for rates +

@@ -40,7 +40,7 @@ general lesson — *marginalize discrete latents when you can* — recurs in Pro
 
 3. **SBC is genuinely expensive for mixtures.** Prior draws occasionally place the
    two means almost on top of each other, producing a near-degenerate, slow fit;
-   40 light simulations blew the time budget. We cut to 24 simulations with
+   40 light simulations blew the time budget. We cut to 18 simulations with
    `N=100, draws=150`. *Lesson:* SBC for a slow model is a *smoke test*, not a
    high-resolution audit, unless you can afford hundreds of refits.
 
