@@ -58,6 +58,10 @@ class NotebookBuilder:
             "name": self.kernel,
         }
         nb.metadata["language_info"] = {"name": "python", "version": "3.11"}
+        # Deterministic cell IDs so rebuilds are byte-stable (nbformat otherwise
+        # assigns random IDs, producing spurious git diffs on every `build_all`).
+        for i, cell in enumerate(nb.cells):
+            cell["id"] = f"cell-{i:03d}"
         nbformat.validate(nb)
         return nb
 
