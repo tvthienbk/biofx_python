@@ -36,8 +36,29 @@ N_OBS = 60
 N_SIMS = 12
 L = 200
 TAU0 = 0.3
+SLAB_SCALE = 2.0
+SLAB_DF = 4.0
 CALIB_IDX = (0, 1)   # the two coefficients we calibrate
 SEED = 20240601
+
+
+def draw_horseshoe_prior(rng):
+    """Draw (beta, beta0, sigma) directly from the regularized-horseshoe prior.
+
+    This reproduces EXACTLY the prior in ``build_model`` (HalfCauchy tau and lam,
+    InverseGamma slab c2, regularized local scale lam_tilde), but in pure numpy so
+    we avoid recompiling a PyMC model on every SBC iteration. Sampling the prior
+    this way keeps simulator and model consistent while running far faster.
+    """
+    beta0 = rng.normal(0.0, 5.0)
+    sigma = abs(rng.normal(0.0, 5.0)) + 1e-3               # HalfNormal(5)
+    tau = abs(rng.standard_cauchy()) * TAU0                 # HalfCauchy(TAU0)
+    lam = np.abs(rng.standard_cauchy(size=P))              # HalfCauchy(1)
+    c2 = 1.0 / rng.gamma(SLAB_DF / 2.0, 1.0 / (SLAB_DF / 2.0 * SLAB_SCALE ** 2))
+    lam_tilde = lam * np.sqrt(c2 / (c2 + tau ** 2 * lam ** 2))
+    z = rng.normal(0.0, 1.0, size=P)
+    beta = z * tau * lam_tilde
+    return beta, beta0, sigma
 
 
 def run_sbc(seed: int = SEED) -> dict:
@@ -45,15 +66,9 @@ def run_sbc(seed: int = SEED) -> dict:
     X = rng.normal(0.0, 1.0, size=(N_OBS, P))
     X = (X - X.mean(0)) / X.std(0)
     ranks = {f"beta[{j}]": np.empty(N_SIMS, int) for j in CALIB_IDX}
-    base = {"X": X, "y": np.zeros(N_OBS), "n": N_OBS, "p": P}
     for i in range(N_SIMS):
-        # 1. draw the prior from the model itself (simulator == model prior)
-        with build_model(base, model="horseshoe", tau0=TAU0):
-            prior = pm.sample_prior_predictive(
-                draws=1, random_seed=int(rng.integers(1, 1_000_000)))
-        beta_star = prior.prior["beta"].values.reshape(-1)[:P]
-        beta0_star = float(prior.prior["beta0"].values.reshape(-1)[0])
-        sigma_star = float(prior.prior["sigma"].values.reshape(-1)[0])
+        # 1. draw the prior (numpy, identical to the model's prior)
+        beta_star, beta0_star, sigma_star = draw_horseshoe_prior(rng)
         # 2. simulate data
         y = beta0_star + X @ beta_star + rng.normal(0.0, sigma_star, size=N_OBS)
         data = {"X": X, "y": y, "n": N_OBS, "p": P}
@@ -75,7 +90,7 @@ def main() -> None:
     ranks = run_sbc()
     print(f"SBC over {N_SIMS} simulations (P={P}, N={N_OBS}, L~{L})")
     for name, r in ranks.items():
-        rep = assert_calibrated(r, n_bins=4)
+        rep = assert_calibrated(r, n_bins=5)
         print(f"  {name}: chi2={rep['chi2']:.2f}, dof={rep['dof']}, "
               f"p={rep['pvalue']:.3f}, uniform={rep['uniform']}")
     try:
@@ -85,8 +100,8 @@ def main() -> None:
 
         fig, axes = plt.subplots(1, len(ranks), figsize=(4 * len(ranks), 3.5))
         for ax, (name, r) in zip(np.atleast_1d(axes), ranks.items()):
-            ax.hist(r, bins=4, color="#4C72B0", edgecolor="white")
-            ax.axhline(N_SIMS / 4, color="k", ls="--", lw=1)
+            ax.hist(r, bins=5, color="#4C72B0", edgecolor="white")
+            ax.axhline(N_SIMS / 5, color="k", ls="--", lw=1)
             ax.set(xlabel="rank", ylabel="count", title=f"SBC — {name}")
         fig.suptitle("SBC rank histograms — regularized horseshoe")
         fig.tight_layout()

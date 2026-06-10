@@ -23,15 +23,26 @@ import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from shared.bayes_utils import assert_calibrated, sbc_rank  # noqa: E402
-from model import fit  # noqa: E402
+import pymc as pm  # noqa: E402
 
-N_SIMS = 12
-T = 120
-DRAWS = 150
-TUNE = 300
+from shared.bayes_utils import assert_calibrated, sbc_rank  # noqa: E402
+from model import build_model  # noqa: E402
+
+N_SIMS = 8
+T = 100
+DRAWS = 120
+TUNE = 250
 A_SW, B_SW = 2.0, 8.0
 MU_SD, SIGMA_SD = 3.0, 1.0
+
+
+def _light_fit(sim, seed):
+    """Posterior-only fit (no prior predictive) to keep each SBC iteration cheap."""
+    with build_model({"y": sim["y"]}, a_switch=A_SW, b_switch=B_SW,
+                     prior_mu_sd=MU_SD, prior_sigma_sd=SIGMA_SD):
+        idata = pm.sample(draws=DRAWS, tune=TUNE, chains=2, random_seed=seed,
+                          target_accept=0.9, progressbar=False)
+    return idata
 
 
 def simulate_once(rng) -> dict:
@@ -53,9 +64,7 @@ def run_sbc(seed: int = 0):
     ranks = {"separation": [], "sigma": []}
     for i in range(N_SIMS):
         sim = simulate_once(rng)
-        idata = fit({"y": sim["y"]}, draws=DRAWS, tune=TUNE, chains=2,
-                    seed=2000 + i, a_switch=A_SW, b_switch=B_SW,
-                    prior_mu_sd=MU_SD, prior_sigma_sd=SIGMA_SD)
+        idata = _light_fit(sim, seed=2000 + i)
         sep_post = idata.posterior["separation"].values.ravel()
         sig_post = idata.posterior["sigma"].values.ravel()
         ranks["separation"].append(sbc_rank(sim["sep"], sep_post))

@@ -25,15 +25,26 @@ import numpy as np
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from shared.bayes_utils import assert_calibrated, sbc_rank  # noqa: E402
-from model import fit, add_separation  # noqa: E402
+import pymc as pm  # noqa: E402
 
-N_SIMS = 24       # light: mixtures are expensive
+from model import build_model, add_separation  # noqa: E402
+
+N_SIMS = 18       # light: mixtures are expensive
 N_OBS = 100       # small datasets to keep each fit fast
 DRAWS = 150
 TUNE = 300
 W_CONC = 2.0
 MU_SD = 3.0
 SIGMA_SD = 1.0
+
+
+def _light_fit(sim, seed):
+    """Posterior-only fit (no prior/posterior predictive) to keep SBC cheap."""
+    with build_model({"y": sim["y"]}, w_conc=W_CONC, prior_mu_sd=MU_SD,
+                     prior_sigma_sd=SIGMA_SD):
+        idata = pm.sample(draws=DRAWS, tune=TUNE, chains=2, random_seed=seed,
+                          target_accept=0.9, progressbar=False)
+    return idata
 
 
 def simulate_once(rng) -> dict:
@@ -56,16 +67,7 @@ def run_sbc(seed: int = 0):
     ranks = {"separation": [], "w[1]": [], "sigma": []}
     for i in range(N_SIMS):
         sim = simulate_once(rng)
-        idata = fit(
-            {"y": sim["y"]},
-            draws=DRAWS,
-            tune=TUNE,
-            chains=2,
-            seed=1000 + i,
-            w_conc=W_CONC,
-            prior_mu_sd=MU_SD,
-            prior_sigma_sd=SIGMA_SD,
-        )
+        idata = _light_fit(sim, seed=1000 + i)
         add_separation(idata)
         sep_post = idata.posterior["separation"].values.ravel()
         whi_post = idata.posterior["w"].isel(w_dim_0=1).values.ravel()

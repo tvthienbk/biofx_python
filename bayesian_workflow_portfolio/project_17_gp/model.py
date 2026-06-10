@@ -140,7 +140,7 @@ if __name__ == "__main__":
     from data.generate_data import generate
 
     d = generate()
-    idata = fit(d, draws=250, tune=400, chains=2)
+    idata = fit(d, draws=200, tune=300, chains=2)
     print(az.summary(idata, var_names=["ell", "eta", "sigma"]))
     n_div = int(idata.sample_stats["diverging"].sum())
     print(f"divergences: {n_div}")

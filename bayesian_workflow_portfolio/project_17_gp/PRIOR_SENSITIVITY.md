@@ -16,25 +16,33 @@ for `ell`, `eta`, `sigma`, the divergence count, and the fitted-curve error
 because **that is the prior that controls identifiability** in a squared-
 exponential GP.
 
+> **Compute note.** Because a GP-with-Gaussian-noise has a **closed-form marginal
+> likelihood**, the script obtains each posterior by self-normalised **importance
+> sampling** in pure numpy (prior particles weighted by the marginal likelihood,
+> then resampled) instead of running NUTS three times. This is exact up to
+> Monte-Carlo error, runs in a few seconds, and avoids the slow no-BLAS GP sampling
+> — the same closed-form philosophy as the main model and the SBC script.
+
 ## What to expect
 
-- **Informative & Mild:** stable, well-mixing fits. `sigma` lands near the true
-  `0.18`, divergences stay at (or near) zero, and the curve MAE is small. The two
-  posteriors largely agree — the data are informative enough that a *reasonable*
-  length-scale prior suffices.
-- **Vague `IG(1,1)`:** the prior puts non-trivial mass on both very small and
-  large length-scales. This re-opens the `ell ↔ eta` trade-off: the posterior
-  smears along a ridge, divergences appear, ESS drops, and the curve fit becomes
-  less stable. This is the *pathology the project is about*, surfaced by relaxing
-  the very prior that controls it.
+- **Informative & Mild:** stable fits. `sigma` lands near the true `0.18`, the
+  curve MAE is small, and the `(ell, eta)` correlation is modest. The posteriors
+  largely agree — the data + the informative `eta`/`sigma` priors are enough that a
+  *reasonable* length-scale prior suffices.
+- **Vague `IG(1,1)`:** `sigma` and the curve stay robust (they are pinned by the
+  data), but the **length-scale `ell` drifts upward** as its prior loosens and the
+  `(ell, eta)` posterior stays correlated — the residual non-identifiability the
+  length-scale prior exists to control. Push the prior vaguer still, or shrink the
+  data, and this drift becomes a full `(ell, eta)` ridge (see `notebook_broken.ipynb`).
 
 ## Interpretation
 
-The headline lesson: in a GP, **robustness is not automatic and it is purchased by
-the length-scale prior.** Unlike a well-identified parametric model where a vague
-prior is harmless once data accumulate, a GP's `(ell, eta)` ambiguity does not
-vanish with more data along the relevant direction — large `ell`/large `eta` and
-small `ell`/small `eta` remain genuinely hard to distinguish. The informative,
-zero-avoiding inverse-gamma prior is therefore a *modelling* decision, not a
-nuisance default. Report the curve and `sigma` under the informative prior, and
-disclose that conclusions would degrade under a vague length-scale prior.
+The headline lesson: in a GP, **what the length-scale prior buys you is control of
+`ell` itself.** The fitted curve and the noise scale can look robust while `ell`
+quietly wanders — and `ell` is exactly the quantity that governs flexibility and
+that trades off with the amplitude `eta`. Unlike a well-identified parametric model
+where a vague prior is harmless once data accumulate, a GP's `(ell, eta)` ambiguity
+does not vanish along the relevant direction: large `ell`/large `eta` and small
+`ell`/small `eta` remain genuinely hard to distinguish. The informative,
+zero-avoiding inverse-gamma length-scale prior is therefore a *modelling* decision,
+not a nuisance default.

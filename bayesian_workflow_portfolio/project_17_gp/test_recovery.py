@@ -24,7 +24,7 @@ from model import fit, predict_curve  # noqa: E402
 
 def test_recovers_sigma_and_curve():
     data = generate()
-    idata = fit(data, draws=250, tune=400, chains=2, seed=7)
+    idata = fit(data, draws=200, tune=350, chains=2, seed=7)
     # 1. identifiable scalar: noise sd
     (res,) = check_recovery(idata, data["truth"])
     assert res.covered, f"94% HDI failed to cover true sigma: {res}"

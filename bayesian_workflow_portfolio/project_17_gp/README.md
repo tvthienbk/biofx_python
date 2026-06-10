@@ -17,12 +17,12 @@ This is one of the four "heavy" projects in the portfolio (#17–20).
 - **BLAS is not linked in this environment**, so dense linear algebra is slow and,
   critically, PyMC's *multiprocess* sampler can hang. We therefore sample with
   `cores=1` (serial chains). This is set inside `model.fit`; do not remove it.
-- Expected wall-clock on a CPU core, serial:
-  - `python3 model.py` (self-test, 300 draws): ~40–70 s
-  - `python3 -m pytest test_recovery.py -q` (300 draws + curve predict): ~60–90 s
-  - `python3 sbc.py` (12 GP refits): ~120–180 s
-  - `python3 prior_sensitivity.py` (3 fits): ~120–180 s
-- The notebook uses `draws=500, tune=1000` for the showcase fit (~90 s). It is
+- Expected wall-clock on a CPU core, serial (CPU-bound; slower under contention):
+  - `python3 model.py` (self-test, 250 draws): ~60–150 s
+  - `python3 -m pytest test_recovery.py -q` (250 draws + curve predict): ~90–150 s
+  - `python3 sbc.py` (200 sims, **analytic** importance sampling — no MCMC): ~60 s
+  - `python3 prior_sensitivity.py` (3 priors, **analytic** importance sampling): ~5 s
+- The notebook uses `draws=400, tune=600` for the showcase fit. It is
   **validated statically** (AST compile), not executed, by the build runner.
 
 If you need it faster, lower `draws`/`tune` or `N` — correctness of the recovered

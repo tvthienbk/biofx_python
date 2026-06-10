@@ -28,11 +28,13 @@ Calibrated inference => ranks uniform. ∪-shapes mean over-confident posteriors
 | $N$ per dataset | 60 |
 | posterior draws $L$ | ~200 (2 chains × 100) |
 | tuning | 400, `target_accept=0.95` |
-| uniformity test | chi-square, 4 bins |
+| uniformity test | chi-square, 5 bins |
 
-**Key correctness detail.** The simulator draws the prior **from the model itself**
-via `pm.sample_prior_predictive` on `build_model`, so the simulator and the model
-share *exactly* the same heavy-tailed horseshoe prior. This is what makes the SBC
+**Key correctness detail.** The simulator draws the prior **directly in numpy**, reproducing exactly the
+regularized-horseshoe prior in `build_model` (HalfCauchy tau/lam, InverseGamma
+slab, regularized local scale, non-centered z). Drawing the prior in numpy rather
+than rebuilding a PyMC model each iteration keeps simulator and model consistent
+while running far faster. This is what makes the SBC
 valid — drawing $\beta$ from any approximation of the prior would bias the ranks.
 We use a small $P$ and few simulations to keep the run to ~1–2 minutes; SBC here
 certifies the inference machinery on the coefficient targets, while *sparsity

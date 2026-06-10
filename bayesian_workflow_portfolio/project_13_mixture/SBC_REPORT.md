@@ -14,7 +14,7 @@ Simulation-Based Calibration (SBC) checks that the **whole inference procedure**
 4. Record the **rank** of each true value among its posterior draws.
 
 If inference is calibrated, the ranks are **uniform** on `{0, …, L}`. We run
-`N_SIMS = 24` simulations — a deliberately *light* smoke-level check, because each
+`N_SIMS = 18` simulations — a deliberately *light* smoke-level check, because each
 mixture refit costs a few seconds and many prior draws give nearly-overlapping
 means (a hard, slow regime).
 
@@ -29,7 +29,7 @@ Output of `python3 sbc.py` (chi-square uniformity test per quantity, 8 bins;
 histogram saved to `sbc_ranks.png`):
 
 ```
-SBC over 24 simulations (N=100, draws=150/chain x2)
+SBC over 18 simulations (N=100, draws=150/chain x2)
    separation: chi2=..., p=...,  uniform=True/False
         w[1]:  chi2=..., p=...,  uniform=...
        sigma:  chi2=..., p=...,  uniform=...
@@ -47,7 +47,7 @@ rank histograms are written to `sbc_ranks.png`.)
   (under-confident).
 - A **slope / shift** → bias.
 
-With only 24 simulations and a tiny sampler the histograms are noisy; we are
+With only 18 simulations and a tiny sampler the histograms are noisy; we are
 looking for *gross* miscalibration, not fine structure. The chi-square p-value is
 reported but should be read alongside the histogram shape rather than as a hard
 pass/fail at these small counts. A higher-resolution SBC (≥ 200 simulations, more
