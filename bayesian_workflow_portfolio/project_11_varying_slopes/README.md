@@ -147,8 +147,10 @@ predicting new lines; the exact `rho` needs more lines to pin down.
 1. **Modeling intercept and slope as independent.** *The* pitfall. It hard-codes
    `rho = 0`, mis-fits the data, and gives wrong predictive covariance for new
    groups. Use LKJ; see `notebook_broken.ipynb` and `BROKEN_BUGS.md`.
-2. **The centered-parameterization funnel.** Multivariate now, but the same cure:
-   non-center via the Cholesky factor.
+2. **The centered-parameterization funnel.** Multivariate now, and the same cure:
+   non-center via the Cholesky factor. For *this* dataset (moderate SDs, 10 obs/line)
+   the funnel is mild and the centered form happens to sample acceptably, but it is
+   fragile — shrink the SDs or thin the data and it diverges. Non-center by default.
 3. **Over-reading `rho` from few groups.** With 8 lines `rho` is loosely identified
    and prior-sensitive (LKJ `eta`); report direction and uncertainty, not a precise
    value.

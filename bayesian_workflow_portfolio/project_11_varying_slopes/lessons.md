@@ -70,7 +70,7 @@ divergence-free where a centered version diverges.
 The environment warns "PyTensor could not link to a BLAS installation", so the
 matrix operations in `LKJCholeskyCov` run on a slow fallback. This made the LKJ
 refits markedly slower than the scalar hierarchical models, which forced SBC down
-to 24 light simulations to stay within the time budget. The lesson for builders:
+to 10 light simulations to stay within the time budget. The lesson for builders:
 multivariate hierarchical SBC is expensive *and* sensitive to the linear-algebra
 backend; budget accordingly and keep it light.
 

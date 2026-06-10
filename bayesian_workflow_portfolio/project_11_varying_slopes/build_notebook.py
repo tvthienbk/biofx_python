@@ -177,10 +177,11 @@ def broken_notebook() -> NotebookBuilder:
     nb = NotebookBuilder(title="Project 11 — BROKEN debugging exercise")
     nb.md(
         "# Project 11 — BROKEN notebook (debugging exercise)",
-        "Two seeded problems: (1) modeling intercept and slope as **independent** "
-        "(diagonal covariance, no LKJ), which misses the real correlation, and (2) a "
-        "**centered** parameterization that diverges. Run it, compare to truth, then "
-        "fix both. Answer key: `BROKEN_BUGS.md`.",
+        "Two seeded problems: (1) the **headline bug** — modeling intercept and slope "
+        "as **independent** (diagonal covariance, no LKJ), which assumes away the real "
+        "correlation; and (2) the **inferior centered** parameterization, which here "
+        "samples acceptably but is fragile and is the wrong default for hierarchical "
+        "scales. Run it, compare to truth, then fix both. Answer key: `BROKEN_BUGS.md`.",
     )
     nb.code(PATH_PREAMBLE)
     nb.code(
@@ -207,7 +208,10 @@ def broken_notebook() -> NotebookBuilder:
         "    sd_a = pm.HalfNormal('sd_a', 1)\n"
         "    sd_b = pm.HalfNormal('sd_b', 1)\n"
         "    sigma = pm.HalfNormal('sigma', 1)\n"
-        "    # BUG 2: centered parameterization -> funnel\n"
+        "    # BUG 2 (inferior parameterization): centered hierarchical form.\n"
+        "    # For this DGP (moderate SDs, 10 obs/line) the funnel is mild, so this\n"
+        "    # samples acceptably here -- but it is fragile and the wrong default;\n"
+        "    # non-centering (the fix cell) is the principled choice regardless.\n"
         "    alpha = pm.Normal('alpha', mu_a, sd_a, dims='group')\n"
         "    beta = pm.Normal('beta', mu_b, sd_b, dims='group')\n"
         "    pm.Normal('y', mu=alpha[group] + beta[group]*x, sigma=sigma, observed=y)\n"
@@ -215,14 +219,29 @@ def broken_notebook() -> NotebookBuilder:
         "                      random_seed=RNG, progressbar=False)"
     )
 
-    nb.md("### Symptom — divergences, and no rho to be found.")
+    nb.md(
+        "### Symptom — no rho to be found (and check the geometry).",
+        "The headline symptom is structural: this model has **no `rho` parameter at "
+        "all**, so the intercept-slope correlation is silently assumed to be zero. "
+        "Always confirm the geometry too — print divergences and read the energy plot "
+        "below. Here the centered form happens to sample cleanly (~0 divergences) "
+        "because the SDs are moderate and each line has 10 observations; with smaller "
+        "SDs or fewer observations the same centered form would funnel and diverge "
+        "(see Projects 09-10), which is why non-centering is the safe default.",
+    )
     nb.code(
         "print('divergences:', int(idata.sample_stats['diverging'].sum()))\n"
         "print(az.summary(idata, var_names=['mu_a','mu_b','sd_a','sd_b','sigma']))\n"
         "print('NOTE: this model has no rho parameter at all -> correlation ignored.')"
     )
 
-    nb.md("### Diagnostic — energy plot (centered funnel fingerprint).")
+    nb.md(
+        "### Diagnostic — energy plot.",
+        "For this mild geometry the marginal-energy and energy-transition "
+        "distributions should roughly match (healthy BFMI). A large mismatch would be "
+        "the funnel fingerprint; non-centering keeps it healthy even when the "
+        "geometry sharpens.",
+    )
     nb.code("az.plot_energy(idata); plt.tight_layout()")
 
     nb.md(
@@ -244,8 +263,10 @@ def broken_notebook() -> NotebookBuilder:
 
     nb.md(
         "### The fix — LKJ correlated effects, non-centered.",
-        "Model the 2x2 covariance with `pm.LKJCholeskyCov` and use the non-centered "
-        "form. Now $\\rho$ is estimated and divergences drop to ~0. See `model.py`.",
+        "Model the 2x2 covariance with `pm.LKJCholeskyCov` (estimating $\\rho$) and "
+        "use the non-centered form (robust geometry). Now $\\rho$ is recovered and the "
+        "sampler stays divergence-free even at the sharper geometries the centered "
+        "form cannot handle. See `model.py`.",
     )
     nb.code(
         "from model import fit\n"
