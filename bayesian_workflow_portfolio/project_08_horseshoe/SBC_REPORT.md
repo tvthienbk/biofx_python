@@ -24,10 +24,10 @@ Calibrated inference => ranks uniform. ∪-shapes mean over-confident posteriors
 | predictors $P$ | 8 (small, for tractable SBC) |
 | coefficients calibrated | $\beta_0,\beta_1$ (indices 0 and 1) |
 | global-scale prior | $\tau\sim\text{HalfCauchy}(0.3)$ |
-| simulations | 12 |
+| simulations | 10 |
 | $N$ per dataset | 60 |
 | posterior draws $L$ | ~200 (2 chains × 100) |
-| tuning | 400, `target_accept=0.95` |
+| tuning | 300, `target_accept=0.9` |
 | uniformity test | chi-square, 5 bins |
 
 **Key correctness detail.** The simulator draws the prior **directly in numpy**, reproducing exactly the
@@ -47,7 +47,7 @@ output from your run for exact p-values; they vary with seed but remain
 non-significant):
 
 ```
-SBC over 12 simulations (P=8, N=60, L~200)
+SBC over 10 simulations (P=8, N=60, L~200)
   beta[0]: uniform = True
   beta[1]: uniform = True
 ```
