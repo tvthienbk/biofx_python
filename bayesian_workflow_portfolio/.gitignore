@@ -4,3 +4,5 @@ sbc_ranks.png
 **/data/*.csv
 .ipynb_checkpoints/
 __pycache__/
+shared/execute_report.txt
+/tmp/
