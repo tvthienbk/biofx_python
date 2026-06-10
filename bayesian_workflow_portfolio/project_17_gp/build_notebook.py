@@ -134,10 +134,11 @@ def clean_notebook() -> NotebookBuilder:
 
     nb.md(
         "## Step 6 — Posterior predictive checks (the fitted curve)",
-        "We reconstruct the latent function on a dense grid using `gp.predict` averaged "
-        "over posterior hyperparameter draws, and plot the posterior mean with a 94% "
-        "credible band. A good fit: the band hugs the data, contains the **true** curve, "
-        "and widens where data are sparse.",
+        "We reconstruct the latent function on a dense grid via the GP conditional mean "
+        "$\\mu_* = K(x_*,x)\\,[K(x,x)+\\sigma^2 I]^{-1}y$ (evaluated in pure numpy over "
+        "posterior hyperparameter draws — faster than `gp.predict` in a loop), and plot "
+        "the posterior mean with a 94% credible band. A good fit: the band hugs the data, "
+        "contains the **true** curve, and widens where data are sparse.",
     )
     nb.code(
         "pred = predict_curve(data, idata, n_pred=80, seed=3)\n"

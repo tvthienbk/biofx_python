@@ -38,19 +38,22 @@ replicate readings `y_{j,i} ~ N(theta_j, sigma)`. The compounds are exchangeable
 
 **The decisive feature: unequal replication.** Replicate counts run from 20 down
 to 2. A compound with only 2 replicates can post a high *raw* mean purely by chance
-— the **winner's curse**. We engineer the trap with a **fixed** true-effect vector
-so it is reproducible by construction: the true best is compound **#0**
-(`theta = 1.35`) and it is **well-replicated** (`n = 20`, hence recoverable), while a
-genuinely mediocre, **barely-replicated** compound **#11** (`theta = 0.4`, `n = 2`)
-is handed a lucky-high raw mean (~1.76). A naive "advance the top raw mean" policy
-picks **#11** — the wrong compound. Partial pooling shrinks the low-`n` fluke back
-below the well-supported true best.
+— the **winner's curse**. The true effects are a genuine population draw
+`theta_j ~ N(mu, tau)` (so `mu` and `tau` stay recoverable); a **fixed seed**
+(`SEED = 24`) realises a screen in which the trap appears and is correctable. With
+that seed the true best is compound **#0** (`theta = 1.35`), which is
+**well-replicated** (`n = 20`, hence recoverable), while a **barely-replicated**
+compound **#11** (`theta = 0.89`, `n = 2`) draws a lucky-high raw mean (~1.76) that
+pushes it above #0's raw mean. A naive "advance the top raw mean" policy picks
+**#11** — the wrong compound. Partial pooling shrinks the low-`n` fluke back below
+the well-supported true best, restoring #0.
 
-**Data-generating process** (`data/generate_data.py`): a fixed `theta_true` vector,
-within-compound noise `sigma = 1`, and a deliberate positive nudge on the last
-(`n = 2`) compound; the hierarchical prior uses `mu = 0`, `tau = 1` as the
-population story. **Recoverable truths:** `mu`, `tau`, the per-compound `theta_j`,
-and the identity of the true-best compound (`#0`).
+**Data-generating process** (`data/generate_data.py`): `theta_j ~ N(mu, tau)` with
+`mu = 0`, `tau = 1`, within-compound noise `sigma = 1`, and unequal replication
+`n_reps = [20, 18, …, 2, 2, 2]`. The winner's curse is not hand-engineered into the
+effects — it emerges naturally at this seed because the lowest-replicate compound
+happens to draw a favourable assay realisation. **Recoverable truths:** `mu`, `tau`,
+the per-compound `theta_j`, and the identity of the true-best compound (`#0`).
 
 **Assumptions, made explicit:**
 1. Compounds are exchangeable draws from a common population (partial pooling is

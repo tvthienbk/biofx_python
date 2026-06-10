@@ -22,7 +22,7 @@ This is one of the four "heavy" projects in the portfolio (#17–20).
   - `python3 -m pytest test_recovery.py -q` (250 draws + curve predict): ~90–150 s
   - `python3 sbc.py` (200 sims, **analytic** importance sampling — no MCMC): ~60 s
   - `python3 prior_sensitivity.py` (3 priors, **analytic** importance sampling): ~5 s
-- The notebook uses `draws=400, tune=600` for the showcase fit. It is
+- The notebook uses `draws=500, tune=1000` for the showcase fit. It is
   **validated statically** (AST compile), not executed, by the build runner.
 
 If you need it faster, lower `draws`/`tune` or `N` — correctness of the recovered
@@ -138,7 +138,8 @@ draws=500, tune=1000, chains=2, target_accept=0.95, cores=1, random_seed=101
 - `tune=1000`: lets NUTS adapt step size and the (3-dim) mass matrix.
 - `chains=2`: enough for `R-hat`; we keep it at two for speed. `cores=1` because
   multiprocessing hangs without a linked BLAS (see §0).
-- The test and SBC use lighter settings (`draws=300`/`120`).
+- The recovery test uses lighter sampling (`draws=200, tune=350`); SBC and prior
+  sensitivity use the analytic marginal likelihood (no MCMC) instead of NUTS.
 
 ---
 
@@ -159,9 +160,11 @@ geometry → more draws.
 
 ## 6. Posterior predictive checks (Step 6)
 
-We reconstruct the latent function on a dense grid using `gp.predict` averaged
-over a thinned set of posterior hyperparameter draws, giving a posterior mean and
-a 94% credible band. The fit is good when the band hugs the data, **contains the
+We reconstruct the latent function on a dense grid by evaluating the GP
+conditional mean `mu_* = K(x_*, x) [K(x, x) + sigma^2 I]^{-1} y` in pure numpy for
+a thinned set of posterior hyperparameter draws (this avoids recompiling a
+PyTensor graph per draw, which is what makes `gp.predict` in a loop slow), giving a
+posterior mean and a 94% credible band. The fit is good when the band hugs the data, **contains the
 true curve**, and widens in data-sparse regions. We report the mean absolute error
 of the GP mean against `f_true` at the training inputs (`< 0.25` passes).
 

@@ -65,16 +65,15 @@ def fit(
     tune: int = 600,
     chains: int = 2,
     seed: int = 101,
-    target_accept: float = 0.9,
-    predictive: bool = False,
+    target_accept: float = 0.95,
     **build_kw,
 ) -> az.InferenceData:
     """Sample the GP hyperposterior with NUTS.
 
     With the latent ``f`` marginalised out there is no per-point likelihood to
     accumulate cheaply, so we skip ``log_likelihood`` by default (the marginal GP
-    has a single multivariate-normal likelihood term anyway). Set
-    ``predictive=True`` to also attach the posterior-predictive curve.
+    has a single multivariate-normal likelihood term anyway). Use
+    ``predict_curve`` to reconstruct the fitted curve and bands afterwards.
     """
     model, gp = build_model(data, **build_kw)
     with model:

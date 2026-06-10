@@ -25,11 +25,14 @@
 - **Multiprocess sampling hung** without a linked BLAS; `cores=1` fixed it.
 - **The centred `GaussianRandomWalk` really does diverge.** We use it deliberately
   in the broken notebook; the divergence count and the funnel are immediate.
-- **The AR(1) comparison is subtle.** AR(1) conditions on the previous observation
-  and so is fit on `T-1` targets, while the local-level model has a per-time-point
-  likelihood on all `T`. The LOO comparison is therefore *indicative* of
-  per-observation predictive fit, not a clean nested-model test. We flag this in
-  the README — a good reminder that `az.compare` assumes the models score the same
+- **The AR(1) comparison must score the same observations.** A naive AR(1) only
+  writes the `T-1` conditional terms `y_t | y_{t-1}`, leaving `y_0` out — so its
+  pointwise log-likelihood has length `T-1` while the local-level model's has
+  length `T`, and `az.compare`/LOO raises "number of observations should be the
+  same". The fix is to write the AR(1) likelihood in **full**: draw `y_0` from the
+  stationary marginal `N(mu, sigma/sqrt(1-rho^2))` and `y_t | y_{t-1}` from the
+  transition, giving a length-`T` log-likelihood that matches the local-level
+  model. A good reminder that `az.compare` requires the models to score the same
   observations.
 - **Recovery is good but the variances are correlated.** Even with the right
   priors, the `(sigma_level, sigma_obs)` pair plot shows the residual confounding;

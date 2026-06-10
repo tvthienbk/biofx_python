@@ -11,7 +11,7 @@
    highest *raw* mean is usually a low-`n` fluke. Hierarchical shrinkage pulls
    noisy estimates toward the population mean by an amount set by their precision,
    so the surviving "winner" is one with genuine support. In our seed, the raw
-   winner (#10, `n=2`) is wrong; the pooled decision recovers the true best (#9).
+   winner (#11, `n=2`) is wrong; the pooled decision recovers the true best (#0).
 
 3. **The decision can differ from the argmax of the posterior mean.** Ranking by
    posterior mean is better than raw means but still ignores the spread. Expected

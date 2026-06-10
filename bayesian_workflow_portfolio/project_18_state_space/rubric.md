@@ -43,8 +43,9 @@ prior sensitivity, debugging), and an open-ended extension.
 
 ### Step 7 — Model criticism & comparison (8 pts)
 - (5) Fits the AR(1) comparator and compares via LOO (`az.compare`).
-- (3) Interprets the comparison **and** notes the caveat that the two models score
-  slightly different targets.
+- (3) Interprets the comparison **and** notes that LOO is only valid because both
+  models carry a length-`T` pointwise log-likelihood (the AR(1) uses the stationary
+  marginal for `y[0]`), so `az.compare` scores the same observations.
 
 ### Step 8 — Decision & communication (8 pts)
 - (4) Reports the current level with a credible interval and a trend probability.

@@ -13,13 +13,13 @@
 One of the four "heavy" projects (#17-20), though lighter than the GP.
 
 - The latent level is a `T`-dimensional random walk, so the model has `T + few`
-  parameters. We keep `T = 100` for the main fit and `T = 40` for SBC.
+  parameters. We keep `T = 100` for the main fit and `T = 30` for SBC.
 - **BLAS is not linked** in this environment; PyMC's multiprocess sampler can
   hang, so we sample with `cores=1` (set inside `model.fit`). Do not remove it.
 - Expected serial CPU wall-clock:
   - `python3 model.py` (400 draws): ~30-60 s
   - `python3 -m pytest test_recovery.py -q` (400 draws): ~40-70 s
-  - `python3 sbc.py` (20 refits, T=40): ~90-150 s
+  - `python3 sbc.py` (12 refits, T=30): ~90-150 s
   - `python3 prior_sensitivity.py` (3 fits): ~90-150 s
 - The notebook uses `draws=600, tune=1000` for the showcase fit plus an AR(1)
   comparison (~90 s total). It is **validated statically**, not executed.
@@ -140,10 +140,11 @@ We compare the local-level model against a stationary **AR(1)** model via LOO
 (`az.compare`). AR(1) assumes mean reversion; the local-level model assumes a
 persistent random-walk drift. When the level genuinely drifts (as here), the
 local-level model should be competitive or preferred. Both models carry
-`log_likelihood` so LOO is well-defined. (Note: the two models are fit on slightly
-different targets — the AR(1) conditions on the previous observation — so the LOO
-comparison is indicative of fit-per-observation, not a strict nested test; we
-discuss this caveat in `lessons.md`.)
+`log_likelihood` over **all `T` observations**, so LOO is well-defined and the two
+models score the *same* points. The AR(1) likelihood is written in full: `y_0` is
+drawn from the stationary marginal `N(mu, sigma/sqrt(1-rho^2))` and `y_t | y_{t-1}`
+from the transition, so its pointwise log-likelihood has length `T` (not `T-1`) —
+matching the local-level model and keeping `az.compare`/LOO valid across the two.
 
 ---
 

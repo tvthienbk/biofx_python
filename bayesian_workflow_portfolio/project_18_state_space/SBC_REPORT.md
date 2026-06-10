@@ -27,7 +27,7 @@ finishes in a couple of minutes — a deliberate "SBC: light" compute trade-off.
 ## Results
 
 Run `python3 sbc.py`. It prints the chi-square uniformity test over 8 rank bins
-and saves `sbc_ranks.png`. With ~20 simulations the histogram is coarse; the test
+and saves `sbc_ranks.png`. With ~12 simulations the histogram is coarse; the test
 should report **no significant** deviation from uniformity (`p > 0.01`,
 `uniform: True`).
 
