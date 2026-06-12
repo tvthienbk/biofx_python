@@ -135,3 +135,4 @@ dmypy.json
 
 # Bayesian-workflow-20 local virtualenv (do not commit)
 .bayes-venv/
+_bwf_build/
