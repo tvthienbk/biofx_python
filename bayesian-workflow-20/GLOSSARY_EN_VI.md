@@ -38,3 +38,12 @@ Author: Truong Van Thien, PhD / TS. Trương Văn Thiên.
 | grid approximation | xấp xỉ lưới | Evaluating the posterior on a fixed grid of parameter values. |
 | pooled estimate | ước lượng gộp | A single estimate that ignores group structure (can mislead). |
 | Simpson's paradox | nghịch lý Simpson | A trend in pooled data that reverses within every subgroup. |
+
+### P03 — Height ~ weight (linear regression)
+| English | Tiếng Việt | Definition (EN) |
+|---|---|---|
+| linear regression | hồi quy tuyến tính | Modelling the mean of an outcome as a linear function of predictors. |
+| centering | căn giữa (trừ trung bình) | Subtracting the mean of a predictor so the intercept is interpretable. |
+| slope coefficient | hệ số độ dốc | Change in the outcome per one-unit change in the predictor. |
+| LogNormal prior | tiên nghiệm Log-chuẩn | A positive-only prior, here used to force a positive slope. |
+| residual standard deviation | độ lệch chuẩn phần dư | Spread of the outcome around the regression line (σ). |
