@@ -29,3 +29,12 @@ Author: Truong Van Thien, PhD / TS. Trương Văn Thiên.
 | HalfNormal prior | tiên nghiệm nửa-chuẩn | A positive-only prior used for scale parameters such as σ. |
 | trace plot | đồ thị vết (trace) | Per-chain draws over iterations; should look like a fuzzy caterpillar. |
 | BFMI (Bayesian fraction of missing information) | BFMI | Energy-based diagnostic; values > 0.3 indicate healthy momentum resampling. |
+
+### P02 — A single proportion (Beta-Binomial)
+| English | Tiếng Việt | Definition (EN) |
+|---|---|---|
+| Beta-Binomial model | mô hình Beta-Nhị thức | A Binomial likelihood for a count with a Beta prior on the success probability. |
+| conjugate prior | tiên nghiệm liên hợp | A prior whose posterior is in the same family (Beta+Binomial → Beta). |
+| grid approximation | xấp xỉ lưới | Evaluating the posterior on a fixed grid of parameter values. |
+| pooled estimate | ước lượng gộp | A single estimate that ignores group structure (can mislead). |
+| Simpson's paradox | nghịch lý Simpson | A trend in pooled data that reverses within every subgroup. |
