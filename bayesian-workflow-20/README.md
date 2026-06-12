@@ -37,37 +37,37 @@ Difficulty rises strictly; each project adds **one** workflow capability.
 | # | Project | Data | Model | New skill | Status |
 |---|---|---|---|---|---|
 | 01 | Mean height | Howell1 (adults) | Gaussian (μ,σ) | Full loop incl. Stage 0; prior pred.; R̂/ESS | ✅ built & validated |
-| 02 | A single proportion | UCBadmit (pooled) | Beta-Binomial | Grid vs MCMC; sets up §07 paradox | ☐ |
-| 03 | Height ~ weight | Howell1 | Normal linear | Centering; prior pred. for slopes | ☐ |
-| 04 | Divorce ~ marriage/age | WaffleDivorce | Multiple linear | Standardization; DAG / confounding | ☐ |
-| 05 | Economy → elections | hibbs | Linear (tiny n) | Coefficient + predictive intervals | ☐ |
+| 02 | A single proportion | UCBadmit (pooled) | Beta-Binomial | Grid vs MCMC; sets up §07 paradox | ✅ |
+| 03 | Height ~ weight | Howell1 | Normal linear | Centering; prior pred. for slopes | ✅ |
+| 04 | Divorce ~ marriage/age | WaffleDivorce | Multiple linear | Standardization; DAG / confounding | ✅ |
+| 05 | Economy → elections | hibbs | Linear (tiny n) | Coefficient + predictive intervals | ✅ |
 
 ### Tier 2 — GLMs
 | # | Project | Data | Model | New skill | Status |
 |---|---|---|---|---|---|
-| 06 | Arsenic well switching | wells | Logistic | logit interpretation; PPC for binary | ☐ |
-| 07 | Berkeley admissions | UCBadmit | Binomial GLM | Simpson's paradox; condition on dept | ☐ |
-| 08 | Oceanic tool counts | Kline | Poisson | log link; interaction on count scale | ☐ |
-| 09 | Cockroach IPM | roaches | Poisson+offset → NegBin | exposure/offset; overdispersion | ☐ |
-| 10 | Child test scores | kidiq | Linear + interaction | interaction interpretation | ☐ |
+| 06 | Arsenic well switching | wells | Logistic | logit interpretation; PPC for binary | ✅ |
+| 07 | Berkeley admissions | UCBadmit | Binomial GLM | Simpson's paradox; condition on dept | ✅ |
+| 08 | Oceanic tool counts | Kline | Poisson | log link; interaction on count scale | ✅ |
+| 09 | Cockroach IPM | roaches | Poisson+offset → NegBin | exposure/offset; overdispersion | ✅ |
+| 10 | Child test scores | kidiq | Linear + interaction | interaction interpretation | ✅ |
 
 ### Tier 3 — Multilevel
 | # | Project | Data | Model | New skill | Status |
 |---|---|---|---|---|---|
-| 11 | Eight Schools | Rubin 1981 (hardcoded) | Hierarchical normal | partial pooling; centered vs non-centered + funnel; SBC | ☐ |
-| 12 | Radon (Minnesota) | radon | Varying-intercept + group pred. | pooling spectrum; LOGO-CV | ☐ |
-| 13 | Chimpanzee choices | chimpanzees | Varying intercepts + slopes | correlated effects; LKJ | ☐ |
-| 14 | Tadpole survival | reedfrogs | Hierarchical binomial | shrinkage visualization | ☐ |
-| 15 | Hurricane deaths | Hurricanes | Gamma-Poisson (hier.) | overdispersion + critical appraisal | ☐ |
+| 11 | Eight Schools | Rubin 1981 (hardcoded) | Hierarchical normal | partial pooling; centered vs non-centered + funnel; SBC | ✅ |
+| 12 | Radon (Minnesota) | radon | Varying-intercept + group pred. | pooling spectrum; LOGO-CV | ✅ |
+| 13 | Chimpanzee choices | chimpanzees | Varying intercepts + slopes | correlated effects; LKJ | ✅ |
+| 14 | Tadpole survival | reedfrogs | Hierarchical binomial | shrinkage visualization | ✅ |
+| 15 | Hurricane deaths | Hurricanes | Gamma-Poisson (hier.) | overdispersion + critical appraisal | ✅ |
 
 ### Tier 4 — Advanced
 | # | Project | Data | Model | New skill | Status |
 |---|---|---|---|---|---|
-| 16 | Moral judgments | Trolley | Ordered-categorical | ordinal likelihood; category-freq PPC | ☐ |
-| 17 | Divorce w/ measurement error | WaffleDivorce (SE cols) | Error-in-variables + Student-t | data uncertainty; robustness | ☐ |
-| 18 | Cherry-blossom timing | cherry_blossoms | B-splines (+ optional HSGP) | smooth trends without O(n³) GP | ☐ |
-| 19 | Coal-mining disasters | Jarrett 1979 (hardcoded) | Poisson changepoint | discrete latent; compound sampling | ☐ |
-| 20 | **Capstone:** milk energy | milk | Multivariate + imputation + LOO + SBC | integrative capstone | ☐ |
+| 16 | Moral judgments | Trolley | Ordered-categorical | ordinal likelihood; category-freq PPC | ✅ |
+| 17 | Divorce w/ measurement error | WaffleDivorce (SE cols) | Error-in-variables + Student-t | data uncertainty; robustness | ✅ |
+| 18 | Cherry-blossom timing | cherry_blossoms | B-splines (+ optional HSGP) | smooth trends without O(n³) GP | ✅ |
+| 19 | Coal-mining disasters | Jarrett 1979 (hardcoded) | Poisson changepoint | discrete latent; compound sampling | ✅ |
+| 20 | **Capstone:** milk energy | milk | Multivariate + imputation + LOO + SBC | integrative capstone | ✅ |
 
 ## 10-week teaching sequence
 | Week | Projects | Theme |
