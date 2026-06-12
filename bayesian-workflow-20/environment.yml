@@ -1,0 +1,19 @@
+name: bayesian-workflow-20
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pymc>=5.16
+  - bambi>=0.13
+  - arviz>=0.18
+  - numpy>=1.26
+  - pandas>=2.0
+  - matplotlib>=3.7
+  - netcdf4>=1.6
+  - h5netcdf>=1.3
+  - ipython
+  - pip
+  - pip:
+      # Optional speed backends for Tier 3-4 (uncomment to install)
+      # - numpyro>=0.15
+      # - nutpie>=0.13

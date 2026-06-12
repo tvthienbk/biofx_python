@@ -132,3 +132,6 @@ dmypy.json
 .vscode
 
 .DS_Store
+
+# Bayesian-workflow-20 local virtualenv (do not commit)
+.bayes-venv/

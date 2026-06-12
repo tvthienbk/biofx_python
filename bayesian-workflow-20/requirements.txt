@@ -1,0 +1,19 @@
+# Bayesian Workflow 20 — pinned dependencies (Colab-first, Mac-friendly)
+# Core probabilistic programming
+pymc>=5.16
+bambi>=0.13
+# Diagnostics / visualisation
+arviz>=0.18
+# Data
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.7
+# Optional speed (Tier 3-4): NumPyro (JAX) backend and nutpie
+# Install in Colab with:  pip install numpyro nutpie
+# numpyro>=0.15
+# nutpie>=0.13
+# Notebook
+ipython
+# netCDF backend for saving InferenceData (idata.to_netcdf)
+netcdf4>=1.6
+h5netcdf>=1.3
