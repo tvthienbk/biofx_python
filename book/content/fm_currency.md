@@ -1,0 +1,7 @@
+# A Note on Currency and Versioning
+
+Enzyme design moves yearly, and a textbook that pretends otherwise is obsolete on arrival. This edition handles the problem structurally: the conceptual spine — chemistry, transition states, representations, the DBTL discipline — is stable, while every tool is quarantined in a version-stamped **Tool Box** so that a successor can be swapped in without disturbing the surrounding argument.
+
+This edition's frontier, as of early 2026, comprises: **RFdiffusion2** (atom-level active-site scaffolding from functional-group geometry; *Nature Methods*, 2026); **RFdiffusion3** (all-atom design, open-sourced in late 2025, roughly an order of magnitude faster, with direct conditioning on hydrogen-bond identity and burial); **Riff-Diff** (scaffolding of full catalytic arrays; *Nature*, 2025); the **metallohydrolase** and **serine-hydrolase** milestones (*Nature* and *Science*, 2025), which reported de novo catalysts approaching natural efficiencies; and sequence–structure co-design models such as **EnzyGen2** (2026).
+
+When you read a specific version number or success rate, treat it as a timestamp, not a constant. The skills the book teaches — reading a transition state, expressing a catalytic requirement as a machine-readable constraint, filtering by self-consistency, and proving catalysis with the right controls — will outlast every tool named in these pages.
