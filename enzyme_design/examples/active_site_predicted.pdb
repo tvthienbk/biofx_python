@@ -1,0 +1,32 @@
+REMARK  Synthetic AF2-style reprediction of active_site.pdb
+REMARK  = rigid (35 deg z-rot + translation) of the design + small noise.
+REMARK  After superposition, motif Ca-RMSD should be sub-angstrom.
+ATOM      1 N    SER A  84       7.480  10.844  12.060  1.00  0.00           N
+ATOM      2 CA   SER A  84       8.719  11.603  11.896  1.00  0.00           C
+ATOM      3 C    SER A  84       8.290  13.212  11.999  1.00  0.00           C
+ATOM      4 O    SER A  84       7.035  13.681  12.062  1.00  0.00           O
+ATOM      5 CB   SER A  84       9.517  11.481  13.237  1.00  0.00           C
+ATOM      6 OG   SER A  84      10.533  12.305  13.323  1.00  0.00           O
+ATOM      7 N    HIS A  85       9.357  14.061  11.985  1.00  0.00           N
+ATOM      8 CA   HIS A  85       9.130  15.617  11.988  1.00  0.00           C
+ATOM      9 C    HIS A  85      10.534  16.130  12.043  1.00  0.00           C
+ATOM     10 O    HIS A  85      11.626  15.508  12.034  1.00  0.00           O
+ATOM     11 CB   HIS A  85       8.593  15.966  13.199  1.00  0.00           C
+ATOM     12 ND1  HIS A  85      10.438  14.209  13.990  1.00  0.00           N
+ATOM     13 NE2  HIS A  85       7.995  17.226  13.634  1.00  0.00           N
+ATOM     14 N    ASP A  86      10.604  17.549  12.043  1.00  0.00           N
+ATOM     15 CA   ASP A  86      11.717  18.313  12.009  1.00  0.00           C
+ATOM     16 C    ASP A  86      11.416  19.837  12.018  1.00  0.00           C
+ATOM     17 O    ASP A  86      10.276  20.145  12.023  1.00  0.00           O
+ATOM     18 CB   ASP A  86      12.722  17.832  13.174  1.00  0.00           C
+ATOM     19 OD1  ASP A  86       9.523  17.111  14.078  1.00  0.00           O
+ATOM     20 OD2  ASP A  86      13.751  18.601  13.527  1.00  0.00           O
+ATOM     21 N    GLY A  87      12.260  20.585  12.013  1.00  0.00           N
+ATOM     22 CA   GLY A  87      12.281  22.118  12.063  1.00  0.00           C
+ATOM     23 C    GLY A  87      13.538  22.737  12.069  1.00  0.00           C
+ATOM     24 O    GLY A  87      14.602  22.042  11.909  1.00  0.00           O
+HETATM   25 C1   LIG A 200      12.338  12.606  14.011  1.00  0.00           C
+HETATM   26 O1   LIG A 200      12.271  11.418  14.413  1.00  0.00           O
+HETATM   27 O2   LIG A 200      13.601  13.095  14.237  1.00  0.00           O
+HETATM   28 C2   LIG A 200      11.343  13.291  13.169  1.00  0.00           C
+END

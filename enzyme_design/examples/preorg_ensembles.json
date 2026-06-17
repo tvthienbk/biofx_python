@@ -1,0 +1,66 @@
+{
+  "_comment": "Per-design PLACER/ChemNet catalytic-geometry RMSD samples (A) for each mechanistic state, plus satisfied-contact fraction. Demo data for enzyme_design.preorg.",
+  "states": ["michaelis", "ts1", "intermediate", "ts2", "product"],
+  "designs": {
+    "design_0001": {
+      "rmsd_samples": {
+        "michaelis":    [0.4, 0.5, 0.6, 0.5, 0.4],
+        "ts1":          [0.6, 0.7, 0.8, 0.7, 0.6],
+        "intermediate": [0.5, 0.6, 0.7, 0.6, 0.5],
+        "ts2":          [0.7, 0.8, 0.9, 0.8, 0.7],
+        "product":      [0.5, 0.6, 0.5, 0.6, 0.5]
+      },
+      "contacts": {"michaelis": 1.0, "ts1": 0.95, "intermediate": 1.0, "ts2": 0.9, "product": 1.0}
+    },
+    "design_0002": {
+      "rmsd_samples": {
+        "michaelis":    [0.6, 0.8, 0.7, 0.9, 0.7],
+        "ts1":          [0.9, 1.1, 1.0, 1.2, 1.0],
+        "intermediate": [0.8, 1.0, 0.9, 1.1, 0.9],
+        "ts2":          [1.0, 1.2, 1.1, 1.3, 1.1],
+        "product":      [0.7, 0.9, 0.8, 1.0, 0.8]
+      },
+      "contacts": {"michaelis": 0.95, "ts1": 0.85, "intermediate": 0.9, "ts2": 0.85, "product": 0.9}
+    },
+    "design_0004": {
+      "rmsd_samples": {
+        "michaelis":    [0.5, 0.6, 0.7, 0.6, 0.5],
+        "ts1":          [0.8, 0.9, 1.0, 0.9, 0.8],
+        "intermediate": [2.0, 2.4, 2.2, 2.6, 2.3],
+        "ts2":          [0.9, 1.0, 1.1, 1.0, 0.9],
+        "product":      [0.6, 0.7, 0.6, 0.7, 0.6]
+      },
+      "contacts": {"michaelis": 1.0, "ts1": 0.9, "intermediate": 0.55, "ts2": 0.9, "product": 1.0}
+    },
+    "design_0006": {
+      "rmsd_samples": {
+        "michaelis":    [0.3, 0.4, 0.4, 0.3, 0.4],
+        "ts1":          [0.5, 0.6, 0.5, 0.6, 0.5],
+        "intermediate": [0.4, 0.5, 0.4, 0.5, 0.4],
+        "ts2":          [0.6, 0.7, 0.6, 0.7, 0.6],
+        "product":      [0.4, 0.5, 0.4, 0.5, 0.4]
+      },
+      "contacts": {"michaelis": 1.0, "ts1": 1.0, "intermediate": 1.0, "ts2": 0.95, "product": 1.0}
+    },
+    "design_0005": {
+      "rmsd_samples": {
+        "michaelis":    [0.8, 1.0, 0.9, 1.1, 0.9],
+        "ts1":          [1.1, 1.3, 1.2, 1.4, 1.2],
+        "intermediate": [1.0, 1.2, 1.1, 1.3, 1.1],
+        "ts2":          [1.2, 1.4, 1.3, 1.5, 1.3],
+        "product":      [0.9, 1.1, 1.0, 1.2, 1.0]
+      },
+      "contacts": {"michaelis": 0.9, "ts1": 0.8, "intermediate": 0.85, "ts2": 0.8, "product": 0.85}
+    },
+    "design_0008": {
+      "rmsd_samples": {
+        "michaelis":    [0.6, 0.7, 0.8, 0.7, 0.6],
+        "ts1":          [0.8, 0.9, 1.0, 0.9, 0.8],
+        "intermediate": [0.7, 0.8, 0.9, 0.8, 0.7],
+        "ts2":          [0.9, 1.0, 1.1, 1.0, 0.9],
+        "product":      [0.6, 0.7, 0.8, 0.7, 0.6]
+      },
+      "contacts": {"michaelis": 1.0, "ts1": 0.9, "intermediate": 0.95, "ts2": 0.9, "product": 0.95}
+    }
+  }
+}

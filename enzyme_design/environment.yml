@@ -1,0 +1,36 @@
+# Full-protocol conda environment TEMPLATE (Materials → Software).
+#
+# The protocol (Materials) requires pinning exact versions and recording commit
+# hashes for every repository. This file pins what is pip/conda-installable; the
+# GPU generative models (RFdiffusion(AA/2/3), LigandMPNN, ColabFold, PLACER/
+# ChemNet, PyRosetta) are installed from their own repos/containers and are NOT
+# pip packages — record their commit hashes and weight filenames alongside this
+# file (see PROTOCOL_REVIEW.md → Reproducibility).
+#
+# NOTE: conflicting CUDA/torch pins are common; the protocol recommends one
+# isolated environment PER heavy tool. This env covers the lightweight
+# analysis/glue layer (the enzyme_design toolkit + RDKit + analysis).
+name: enzyme-design
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - numpy=1.26.*
+  - pandas=2.2.*
+  - scipy=1.13.*
+  - rdkit=2024.03.*        # ligand/TS handling, protonation, conformers
+  - openbabel=3.1.*        # file conversion / protonation
+  - biopython=1.83
+  - pytest=8.*
+  - jupyterlab
+  - nbconvert
+  - ipykernel
+  - matplotlib
+  # ---- external tools to install separately and PIN BY COMMIT HASH ----
+  #  RFdiffusionAA   : github.com/baker-laboratory/rf_diffusion_all_atom  (weights: RFDiffusionAA_paper_weights.pt)
+  #  RFdiffusion     : github.com/RosettaCommons/RFdiffusion              (Active-Site checkpoint via ckpt_override_path)
+  #  LigandMPNN      : github.com/dauparas/LigandMPNN                      (get_model_params.sh)
+  #  ColabFold/AF2   : colabfold_1.5.5 container + weights/databases
+  #  PLACER/ChemNet  : conformational-ensemble preorganization scoring
+  #  PyRosetta       : enzdes constraints, FastRelax, params, metrics

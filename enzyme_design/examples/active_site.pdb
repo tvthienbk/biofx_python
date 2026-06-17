@@ -1,0 +1,32 @@
+REMARK  Synthetic active-site motif for the enzyme_design toolkit demo.
+REMARK  Catalytic triad-like motif (SER/HIS/ASP) on chain A + a ligand (LIG).
+REMARK  Coordinates are illustrative, not energy-minimised.
+ATOM      1  N   SER A  84      10.000  10.000  10.000  1.00  0.00           N
+ATOM      2  CA  SER A  84      11.450  10.000  10.000  1.00  0.00           C
+ATOM      3  C   SER A  84      12.000  11.420  10.000  1.00  0.00           C
+ATOM      4  O   SER A  84      11.250  12.400  10.000  1.00  0.00           O
+ATOM      5  CB  SER A  84      11.950   9.200  11.200  1.00  0.00           C
+ATOM      6  OG  SER A  84      13.350   9.300  11.400  1.00  0.00           O
+ATOM      7  N   HIS A  85      13.300  11.520  10.000  1.00  0.00           N
+ATOM      8  CA  HIS A  85      14.050  12.770  10.000  1.00  0.00           C
+ATOM      9  C   HIS A  85      15.550  12.500  10.000  1.00  0.00           C
+ATOM     10  O   HIS A  85      16.000  11.350  10.000  1.00  0.00           O
+ATOM     11  CB  HIS A  85      13.700  13.600  11.240  1.00  0.00           C
+ATOM     12  ND1 HIS A  85      14.350  10.900  11.900  1.00  0.00           N
+ATOM     13  NE2 HIS A  85      14.100  14.900  11.700  1.00  0.00           N
+ATOM     14  N   ASP A  86      16.300  13.600  10.000  1.00  0.00           N
+ATOM     15  CA  ASP A  86      17.760  13.560  10.000  1.00  0.00           C
+ATOM     16  C   ASP A  86      18.300  14.980  10.000  1.00  0.00           C
+ATOM     17  O   ASP A  86      17.550  15.960  10.000  1.00  0.00           O
+ATOM     18  CB  ASP A  86      18.300  12.760  11.200  1.00  0.00           C
+ATOM     19  OD1 ASP A  86      15.300  13.900  12.100  1.00  0.00           O
+ATOM     20  OD2 ASP A  86      19.500  12.800  11.450  1.00  0.00           O
+ATOM     21  N   GLY A  87      19.600  15.100  10.000  1.00  0.00           N
+ATOM     22  CA  GLY A  87      20.300  16.380  10.000  1.00  0.00           C
+ATOM     23  C   GLY A  87      21.800  16.200  10.000  1.00  0.00           C
+ATOM     24  O   GLY A  87      22.300  15.080  10.000  1.00  0.00           O
+HETATM   25  C1  LIG A 200      15.000   8.500  12.000  1.00  0.00           C
+HETATM   26  O1  LIG A 200      14.200   7.700  12.400  1.00  0.00           O
+HETATM   27  O2  LIG A 200      16.250   8.300  12.200  1.00  0.00           O
+HETATM   28  C2  LIG A 200      14.600   9.700  11.200  1.00  0.00           C
+END

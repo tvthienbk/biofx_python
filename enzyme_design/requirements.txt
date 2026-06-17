@@ -1,0 +1,8 @@
+# Runtime dependency for the enzyme_design toolkit (everything else is stdlib).
+numpy>=1.24
+
+# Dev / testing / notebooks
+pytest>=7.0
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel>=6.0
