@@ -947,13 +947,15 @@ WEEK = {
 
         {"md": "### Sensitivity — how strong would unmeasured confounding have to "
             "be?\n\n"
-            "Now *pretend* `X2` was never measured, so our only adjusted estimate "
-            "omits it and is biased. The skeptic says 'unmeasured confounding!' We "
-            "answer **quantitatively** with an **E-value**: the minimum strength "
-            "(on the risk-ratio scale) that a hidden confounder would need with "
-            "*both* treatment and outcome to fully explain the observed effect "
-            "away. A large E-value means the skeptic needs an implausibly strong "
-            "hidden cause."},
+            "We adjusted for everything we measured (`X1`, `X2`), and our reported "
+            "estimate is `ate_ols`. A skeptic still says 'but some confounder you "
+            "*didn't* measure explains it!' We answer **quantitatively** with an "
+            "**E-value**: the minimum strength (on the risk-ratio scale) that a "
+            "*further, unmeasured* confounder would need with **both** treatment "
+            "and outcome — beyond `X1` and `X2` — to fully explain the reported "
+            "effect away. A large E-value means the skeptic needs an implausibly "
+            "strong hidden cause. (In the next exercise we instead *drop* a known "
+            "confounder to see the bias an unmeasured one would create.)"},
         {"code": "def e_value(rr):\n"
             "    \"\"\"E-value for an observed risk ratio rr (VanderWeele & Ding 2017).\"\"\"\n"
             "    rr = max(rr, 1.0 / rr)            # work on the >= 1 side\n"

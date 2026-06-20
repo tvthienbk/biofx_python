@@ -239,9 +239,11 @@ WEEK = {
              "solution_title": "(a) No — Table 2 fallacy. (b) Conditioning on "
                 "birth weight (a collider) creates the 'paradox.'",
              "solution": [
-                "DAG: Smoking → BW, Smoking → Mortality, plus U (defects) → BW and "
-                "U → Mortality. BW is a mediator of smoking AND a collider on "
-                "Smoking ← BW → U → Mortality once you condition on it.",
+                "DAG: Smoking → BW → Mortality and Smoking → Mortality (direct), "
+                "plus U (defects) → BW and U → Mortality. BW is a mediator of "
+                "smoking (Smoking → BW → Mortality) AND, because Smoking and U are "
+                "its two parents, a collider on Smoking → BW ← U → Mortality — "
+                "conditioning on it opens that path.",
                 "(a) The smoking coefficient is adjusted for BW — a mediator — so "
                 "it is neither the total effect of smoking nor the causal effect "
                 "of BW. Reading both coefficients off one table is the Table 2 "

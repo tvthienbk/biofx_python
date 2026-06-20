@@ -152,9 +152,10 @@ WEEK = {
                 "The ATE, E[Y(1) − Y(0)], imagines giving the program to "
                 "everyone — including patients who would never have enrolled and "
                 "may respond differently. It answers the mandate question.",
-                "They coincide only under constant or randomly-distributed "
-                "effects. State which one you mean before estimating, because the "
-                "two numbers can differ in size and even in sign."]},
+                "They coincide only when the individual effect is constant, or "
+                "more generally when treatment is unrelated to it (no selection on "
+                "the effect). State which one you mean before estimating, because "
+                "the two numbers can differ in size and even in sign."]},
             {"title": "A vaccine trial in shared households (SUTVA)",
              "prompt": "You randomize a vaccine within households and measure each "
                 "person's infection. Vaccinating one member lowers the others' "
@@ -473,8 +474,8 @@ WEEK = {
              "Effect within a subgroup — basis for personalization."],
          ],
          "note": {"title": "Not interchangeable",
-            "body": "ATE and ATT coincide only under constant or randomly-spread "
-            "effects. Say which you mean."}},
+            "body": "ATE and ATT coincide only under constant effects, or no "
+            "selection on the effect. Say which you mean."}},
         {"type": "compare", "kicker": "Choosing the target",
          "title": "ATE vs. ATT — a worked contrast", "columns": [
             {"head": "Ask the ATT when…", "points": [

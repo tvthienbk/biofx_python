@@ -210,16 +210,17 @@ WEEK = {
             {"title": "Spotting a sample-ratio mismatch",
              "prompt": "You intended a 50/50 split. After a week you have "
                 "498,000 users in control and 502,000 in treatment — but a "
-                "chi-square test against 50/50 returns p ≈ 0.001. The treatment "
+                "chi-square test against 50/50 returns p ≈ 6e-5. The treatment "
                 "metric looks great. What does the SRM imply, and what should you "
                 "do?",
              "solution_title": "The split itself is broken — do not trust the "
                 "metric until you find the cause.",
              "solution": [
                 "Under a correct 50/50 randomization the counts should match the "
-                "intended ratio up to sampling noise. A p ≈ 0.001 against 50/50 "
+                "intended ratio up to sampling noise. A p ≈ 6e-5 against 50/50 "
                 "means the imbalance is far larger than chance — a sample-ratio "
-                "mismatch.",
+                "mismatch. (With a million users even a 0.4% split skew is wildly "
+                "improbable under a fair coin.)",
                 "SRM almost always signals a bug in assignment, logging, or "
                 "filtering (e.g. treatment users with errors silently dropped, "
                 "bots routed to one arm, redirect latency). The two groups are no "
