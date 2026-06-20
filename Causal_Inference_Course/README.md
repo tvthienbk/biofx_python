@@ -40,6 +40,19 @@ The **midterm** (Week 8) covers Weeks 1–7. The **capstone** (Week 15) is the
 final deliverable. Assessment: Problem sets 20% · Labs 25% · Midterm 20% ·
 Capstone 30% · Participation 5%.
 
+## Assessments & instructor materials
+
+The `Assessments/` folder holds the course-wide graded artifacts and the
+teaching guide (all generated, like the weekly materials):
+
+| File | What it is |
+|------|------------|
+| `Midterm_Exam_Weeks_1-7.docx` | A 100-point, ~90-minute midterm covering Weeks 1–7 (concepts, a DAG problem, estimands, an A/B power/CUPED item, control classification, and a by-hand IPW computation). |
+| `Midterm_Exam_Weeks_1-7_SOLUTIONS.docx` | Full instructor answer key with the point breakdown. |
+| `Capstone_Project_Brief.docx` | The capstone assignment: deliverables, milestone timeline, a question→design selection guide, project ideas, and a 7-criterion grading rubric. |
+| `Capstone_Proposal_Template.docx` | A fill-in proposal template (question, estimand, data, identification, assumptions, estimation & robustness plans). |
+| `Instructor_Teaching_Guide.docx` | Per-week teaching notes (key ideas, common misconceptions, discussion prompts), a glossary, and a pacing/exam map. |
+
 ## Running the practice notebooks
 
 ```bash
