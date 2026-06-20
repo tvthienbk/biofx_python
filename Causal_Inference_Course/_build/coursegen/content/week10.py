@@ -424,7 +424,7 @@ WEEK = {
          "rows": [
             ["New Jersey (wage ↑)", "20.4", "21.0", "+0.6"],
             ["Pennsylvania (control)", "23.3", "21.2", "−2.1"],
-            ["DiD (NJ − PA)", "—", "—", "+2.8"],
+            ["DiD (NJ − PA)", "—", "—", "+2.7"],
          ],
          "note": {"title": "Read it",
             "body": "Employment fell in the control state; relative to that "

@@ -898,9 +898,13 @@ WEEK = {
             "strong, weak = np.array(strong), np.array(weak)\n\n"
             "print(f'STRONG  mean={strong.mean():.2f}  std={strong.std():.2f}')\n"
             "print(f'WEAK    mean={weak.mean():.2f}  std={weak.std():.2f}')\n"
-            "print(f'weak median = {np.median(weak):.2f}  (pulled toward OLS bias)')\n\n"
+            "print(f'truth={TRUE_BETA}   OLS (biased) = {ols_beta:.2f}')\n"
+            "print(f'weak median = {np.median(weak):.2f}  '\n"
+            "      f'(pulled away from {TRUE_BETA} toward the OLS value {ols_beta:.2f})')\n\n"
             "assert weak.std() > 3*strong.std(), 'weak IV must be far noisier'\n"
-            "assert abs(np.median(weak) - TRUE_BETA) > abs(strong.mean() - TRUE_BETA)"},
+            "assert abs(np.median(weak) - TRUE_BETA) > abs(strong.mean() - TRUE_BETA)\n"
+            "# the weak IV's center sits between the truth and the OLS bias\n"
+            "assert TRUE_BETA < np.median(weak) < ols_beta, 'weak IV is dragged toward OLS'"},
         {"code": "# The diagnostic: a single weak sample's first-stage F is tiny.\n"
             "zs, xs, ys = make_iv_sample(2000, 0.70)\n"
             "zw, xw, yw = make_iv_sample(2000, 0.03)\n"

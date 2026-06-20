@@ -431,8 +431,8 @@ WEEK = {
             "A → B ← C: A and C are two independent causes funneling into B.",
             "Learn B's value and the causes must 'trade off' to explain it — so "
             "they become dependent.",
-            "Knowing it rained AND the sprinkler was the cause tells you the "
-            "sprinkler was likely off.",
+            "Grass is wet (the collider): learning it rained makes the sprinkler "
+            "less likely — one cause explains the effect away.",
             ("Conditioning on a DESCENDANT of B opens it too — selection counts.", 1),
          ],
          "note": {"title": "Intuition",
