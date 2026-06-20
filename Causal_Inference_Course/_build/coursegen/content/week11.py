@@ -462,6 +462,32 @@ WEEK = {
          "note": {"title": "Objective",
             "body": "minimize ||Y_treated,pre − W·Y_donors,pre|| subject to "
             "w ≥ 0 and Σw = 1."}},
+        {"type": "content", "kicker": "The donor pool",
+         "title": "Who is allowed into the comparison?", "bullets": [
+            "The donors are the untreated units the synthetic blend is built from.",
+            "Include units plausibly driven by the same forces as the treated one.",
+            ("Exclude units that were themselves treated or hit by spillovers.", 1),
+            ("Exclude wildly dissimilar units — they invite extrapolation.", 1),
+            "A larger pool helps fit but raises the risk of overfitting the "
+            "pre-period by chance.",
+         ],
+         "note": {"title": "Rule of thumb",
+            "body": "A handful of credible donors beats a huge pool of "
+            "irrelevant ones — interpolation, not extrapolation."}},
+        {"type": "content", "kicker": "Predictor weighting",
+         "title": "Match predictors, not just the outcome path", "bullets": [
+            "Fit also balances pre-treatment predictors of the outcome, not only "
+            "the lagged outcome itself.",
+            "A second set of weights (the V matrix) says how much each predictor "
+            "matters for the match.",
+            ("V is chosen so the resulting donor weights best predict the "
+             "pre-period outcome.", 1),
+            "Good predictor balance is what makes the synthetic unit a credible "
+            "stand-in after treatment.",
+         ],
+         "note": {"title": "Two layers of weights",
+            "body": "W blends the donors; V says which characteristics the blend "
+            "must match. Most software tunes both."}},
         {"type": "compare", "kicker": "Why these constraints",
          "title": "Convexity buys interpolation and transparency", "columns": [
             {"head": "Non-negative weights", "sub": "w ≥ 0", "points": [
@@ -513,6 +539,18 @@ WEEK = {
          "note": {"title": "Red flag",
             "body": "A synthetic that matches only the final pre-period level but "
             "misses the earlier trajectory is overfitting, not fitting."}},
+        {"type": "content", "kicker": "In-time placebo",
+         "title": "Backdate the intervention as a falsification test", "bullets": [
+            "Pretend treatment happened several periods EARLIER than it did.",
+            "Re-estimate: a credible design should show ~no gap before the real "
+            "intervention.",
+            ("A large fake 'effect' at the placebo date means your fit is "
+             "unreliable.", 1),
+            "This probes the same logic as a parallel-trends pre-test in DiD.",
+         ],
+         "note": {"title": "Two placebo axes",
+            "body": "In-space: move the treatment to other units. In-time: move "
+            "it to other dates. Both should produce nothing."}},
 
         {"type": "section", "kicker": "Part 3", "title": "Placebo inference",
          "subtitle": "With one treated unit there is no standard error — so we "
@@ -627,6 +665,19 @@ WEEK = {
          "note": {"title": "Robustness",
             "body": "Leave-one-out and backdating checks are now standard "
             "companions to any synthetic-control result."}},
+        {"type": "steps", "kicker": "Robustness checklist",
+         "title": "Four checks before you believe a gap", "steps": [
+            {"title": "Leave-one-out",
+             "body": "— drop each high-weight donor in turn; the gap should persist."},
+            {"title": "In-time placebo",
+             "body": "— backdate the intervention; no effect should appear early."},
+            {"title": "In-space placebo",
+             "body": "— the treated gap should be extreme among donor placebos."},
+            {"title": "Donor sensitivity",
+             "body": "— trim the pool to the most similar units; conclusion holds."},
+         ],
+         "note": "If the estimate survives all four, the synthetic counterfactual "
+            "is doing real work — not fitting noise."},
         {"type": "statement",
          "quote": "Build the comparison; don't assume it.",
          "attribution": "This week: simulate a panel with a known effect, solve "

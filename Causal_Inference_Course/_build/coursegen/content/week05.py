@@ -462,25 +462,22 @@ WEEK = {
          "title": "Good controls vs. bad controls",
          "subtitle": "Not all covariates are confounders. Some remove bias, some "
             "add it, and some only move the variance."},
-        {"type": "compare", "kicker": "The core taxonomy",
-         "title": "Four roles a covariate can play", "columns": [
-            {"head": "Good control", "sub": "confounder", "points": [
-                "Z → X and Z → Y.",
-                "Opens a back-door path.",
-                "ADJUST — removes bias."]},
-            {"head": "Bad control", "sub": "mediator", "points": [
-                "X → M → Y.",
-                "On the causal path.",
-                "DON'T — blocks the effect."]},
-            {"head": "Collider", "sub": "common effect", "points": [
-                "X → K ← Y.",
-                "Already blocked.",
-                "DON'T — opens a fake path."]},
-            {"head": "Neutral", "sub": "outcome predictor", "points": [
-                "Z → Y only, not → X.",
-                "Off every back-door.",
-                "Optional — lowers variance."]},
-         ]},
+        {"type": "table", "kicker": "The core taxonomy",
+         "title": "Four roles a covariate can play",
+         "headers": ["Role", "Structure", "Adjust?", "What adjusting does"],
+         "rows": [
+            ["Good control (confounder)", "Z → X and Z → Y", "Yes",
+             "Closes a back-door path — removes bias."],
+            ["Bad control (mediator)", "X → M → Y", "No",
+             "Blocks the very effect you want."],
+            ["Collider (common effect)", "X → K ← Y", "No",
+             "Opens a spurious path — adds bias."],
+            ["Neutral (outcome predictor)", "Z → Y only", "Optional",
+             "Off every back-door — only lowers variance."],
+         ],
+         "note": {"title": "The one rule",
+            "body": "Structure, not timing, decides. Read the role off the "
+            "graph before you touch the regression."}},
         {"type": "content", "kicker": "Don't adjust for mediators",
          "title": "A mediator hides the effect you want", "bullets": [
             "Drug → blood pressure → stroke: blood pressure is the mechanism.",

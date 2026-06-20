@@ -460,9 +460,9 @@ WEEK = {
         ]},
         {"type": "content", "kicker": "Midterm week",
          "title": "Housekeeping: the midterm covers Weeks 1–7", "bullets": [
-            "The in-class midterm spans Block I (causal question, potential "
-            "outcomes, randomization, DAGs) and Block II (regression, matching & "
-            "propensity, weighting & doubly-robust).",
+            "The in-class midterm spans Block I and Block II (Weeks 1–7).",
+            ("Block I: causal question, potential outcomes, randomization, DAGs.", 1),
+            ("Block II: regression, matching & propensity, weighting & doubly-robust.", 1),
             "Expect to label confounders/colliders/mediators, write an estimand, "
             "and reason about identification vs estimation.",
             "Today's new material (IV/MR) is NOT on the midterm — but it builds "

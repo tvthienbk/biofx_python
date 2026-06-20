@@ -507,8 +507,8 @@ WEEK = {
          "title": "What would make each design fail?", "columns": [
             {"head": "Design-based", "sub": "RCT · IV · RD · DiD · SC", "points": [
                 "Leans on the assignment mechanism.",
-                "Fails via: broken randomization, weak/invalid instrument, "
-                "manipulation at the cutoff, non-parallel trends.",
+                "Fails via: weak instrument, cutoff manipulation, "
+                "non-parallel trends.",
                 "Probe with placebo / pre-trend tests."]},
             {"head": "Adjustment-based", "sub": "Matching · weighting · DML",
              "points": [

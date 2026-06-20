@@ -9,7 +9,7 @@ Build a synthetic version of the treated unit from a weighted blend of untreated
 | File | What it is |
 |------|------------|
 | `Week11_Synthetic_Control_Self_Study_Packet.docx` | Readings, concept refresher, problem set (+ full solutions), the lab, and a self-check. Work through it after lecture (~5–7 h). |
-| `Week11_Synthetic_Control_Lecture.pptx` | The ~22-slide lecture deck. |
+| `Week11_Synthetic_Control_Lecture.pptx` | The ~26-slide lecture deck. |
 | `Week11_Synthetic_Control_Practice.ipynb` | Runnable Jupyter notebook: worked examples + graded-style exercises with solutions. All data is simulated with a known ground truth. |
 
 ## This week in one sentence

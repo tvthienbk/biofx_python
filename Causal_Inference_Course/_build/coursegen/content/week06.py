@@ -371,6 +371,19 @@ WEEK = {
             "body": "Matching makes the comparison transparent and flags where "
             "there is simply no comparable control — regression silently "
             "extrapolates there."}},
+        {"type": "content", "kicker": "Why we need a score",
+         "title": "Exact matching breaks in high dimensions", "bullets": [
+            "Exact matching pairs units with identical covariates — perfect when "
+            "X is a few discrete variables.",
+            "With many covariates, almost no two units match exactly: the curse "
+            "of dimensionality.",
+            ("Coarsened matching bins continuous covariates — a partial fix.", 1),
+            "The propensity score solves this by collapsing all of X into a "
+            "single number to match on.",
+         ],
+         "note": {"title": "The pivot",
+            "body": "Instead of matching on many covariates at once, match on one "
+            "scalar that summarizes them all — next."}},
         {"type": "compare", "kicker": "Two ways to adjust",
          "title": "Regression vs. matching", "columns": [
             {"head": "Regression (Week 5)", "points": [
@@ -411,6 +424,20 @@ WEEK = {
          "note": {"title": "What it does NOT do",
             "body": "It only balances MEASURED X. Unmeasured confounders are "
             "untouched — the propensity score is not magic."}},
+        {"type": "content", "kicker": "Estimating e(X)",
+         "title": "How to fit the propensity score", "bullets": [
+            "Usually logistic regression of treatment on the covariates (and "
+            "sensible interactions / splines).",
+            "Flexible learners (gradient boosting, random forests) can help with "
+            "many covariates.",
+            ("Judge the model by the BALANCE it produces, not by its own "
+             "fit/AUC.", 1),
+            "A high-AUC score that creates poor overlap is worse than a modest "
+            "one that balances well.",
+         ],
+         "note": {"title": "Iterate",
+            "body": "Fit → match/weight → check balance → revise the score. "
+            "Balance, not prediction accuracy, is the target."}},
         {"type": "statement",
          "quote": "The propensity score is a means to balance, not an end.",
          "attribution": "You never interpret its coefficients. You fit it, match "
@@ -540,6 +567,19 @@ WEEK = {
          "note": "Dehejia & Wahba (1999) revived the method; Smith & Todd (2005) "
             "showed it is fragile to specification and overlap. Both lessons "
             "matter."},
+        {"type": "content", "kicker": "The honest caveat",
+         "title": "Matching only fixes what you measured", "bullets": [
+            "Perfect covariate balance still leaves UNMEASURED confounders "
+            "untouched.",
+            "Matching makes the no-unmeasured-confounding bet visible — it does "
+            "not make it true.",
+            ("This is the same assumption regression needs; matching just states "
+             "it honestly.", 1),
+            "When you doubt it, reach for a design (IV, RD, DiD) — Block III.",
+         ],
+         "note": {"title": "Bridge to sensitivity analysis",
+            "body": "Week 7 adds weighting & double robustness; Week 14 asks how "
+            "strong an unmeasured confounder would have to be (E-values)."}},
         {"type": "compare", "kicker": "The takeaway",
          "title": "When does matching work?", "columns": [
             {"head": "It can recover the benchmark when…", "points": [
