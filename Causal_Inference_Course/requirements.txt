@@ -1,0 +1,11 @@
+# Run the weekly practice notebooks with these (all standard, pip-installable).
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+matplotlib>=3.7
+statsmodels>=0.14
+scikit-learn>=1.3
+
+# Only needed to REBUILD the .docx / .pptx from the content modules:
+python-docx>=1.1
+python-pptx>=0.6.23
