@@ -1,0 +1,64 @@
+# theozyme_def.txt — TEMPLATE for the serine-hydrolase / esterase active site (Project 21)
+# =============================================================================
+# THIS IS A TEMPLATE TO FILL IN, NOT DATA. The numbers below are PLACEHOLDERS.
+# A theozyme ("theoretical enzyme") is the minimal set of catalytic functional
+# groups plus the geometry they must hold around the reaction's TRANSITION STATE
+# (here: the TETRAHEDRAL INTERMEDIATE of ester hydrolysis).
+# You CONSTRUCT it from the literature and/or a QM transition-state calculation —
+# it is a teaching/design template, not fabricated experimental data. No kcat/KM/ee here.
+#
+# Build the real geometry from:
+#   - Lauko et al. 2025 (Science) — de novo serine hydrolases (the triad + oxyanion-hole
+#     placement this project reproduces; verify the reported catalytic geometry)
+#   - a classic alpha/beta-hydrolase mechanism reference (a lipase / cutinase / acetylcholinesterase
+#     active site — the canonical Ser-His-Asp triad + oxyanion hole)
+#   - any verified serine-hydrolase PDB entry (confirm triad-residue identities/distances against the
+#     paper + the PDB entry; see data/README.md, all flagged "verify on RCSB")
+#   - a QM transition-state model of ester hydrolysis (place the groups relative to the TETRAHEDRAL
+#     INTERMEDIATE / TS, not the ground-state ester).
+#
+# REACTION
+#   Ester hydrolysis (serine-hydrolase mechanism): His-activated Ser-OG attacks the ester carbonyl
+#   carbon to form a tetrahedral intermediate (stabilised by the oxyanion hole), collapsing to an
+#   acyl-enzyme; a His-activated water then hydrolyses the acyl-enzyme to release the acid product and
+#   regenerate the free serine. This is the workhorse chemistry of esterases, lipases, and proteases.
+#
+# SUBSTRATE
+#   A chromogenic ESTER for fast, quantitative screening: p-nitrophenyl acetate (pNPA, C2) or
+#   p-nitrophenyl butyrate (pNPB, C4). Hydrolysis releases p-nitrophenolate, which absorbs at
+#   ~405-410 nm — a one-step plate-reader steady-state kinetic readout. A homologous acyl-chain
+#   series (C2/C4/C6/C8 pNP-esters) probes SUBSTRATE SCOPE (esterase- vs lipase-like preference).
+#   State which ester(s) you encode and why.
+#
+# TRANSITION STATE (fill from QM/literature)
+#   ts_contact_atom : <ester carbonyl C — attacked by Ser-OG; and the carbonyl O — the developing oxyanion>
+#   ts_geometry     : <Ser-OG nucleophilic attack on the carbonyl C (Burgi-Dunitz-like ~105 deg approach)
+#                      forming the tetrahedral intermediate; His-NE2 abstracts the Ser-OH proton; Asp-OD
+#                      orients/protonates His (charge-relay); the oxyanion hole donates two H-bonds to the
+#                      developing oxyanion — describe + place the groups around the TETRAHEDRAL
+#                      INTERMEDIATE, not the ground-state ester>
+#
+# CATALYTIC FUNCTIONAL GROUPS  (role | residue(s) | key atom | target distance Å | target angle deg)
+# ---------------------------------------------------------------------------------------------
+# Replace every <...> with values from literature/QM. Distances are to the TS contact point.
+# FIX ALL OF THESE during LigandMPNN sequence design (the triad AND the oxyanion-hole donors).
+#
+catalytic_ser      <SER>          <OG>   <OG-to-carbonyl-C, e.g. 2.6-3.2>   <attack angle, e.g. ~105 Burgi-Dunitz>
+catalytic_his      <HIS>          <NE2>  <NE2-to-Ser-OG/OH, e.g. 2.8-3.2>   <angle, e.g. ~120>
+catalytic_asp      <ASP|GLU>      <OD2|OE2>  <OD-to-His-ND1, e.g. 2.6-3.0>  <angle, e.g. ~120>
+oxyanion_donor_1   <backbone-NH>  <N>    <N-to-carbonyl/oxyanion-O, e.g. 2.8-3.2>   <angle, e.g. ~150>
+oxyanion_donor_2   <backbone-NH|SER-OG>  <N|OG>  <to-carbonyl/oxyanion-O, e.g. 2.8-3.2>  <angle, e.g. ~150>
+#
+# (Optional additional groups some esterases/lipases use — add if your TS model or scope target motivates them:)
+# acyl_pocket      <hydrophobic lining>  <...>  <pocket depth/width for the acyl chain>  <n/a>  # sets acetate vs longer-acyl preference
+# aromatic_clamp   <TRP|TYR|PHE>  <ring>  <ring-centroid_to_substrate, e.g. 3.5-4.5>   <n/a>   # substrate binding/orientation
+#
+# NOTES / PROVENANCE (fill these — graded)
+#   - Which paper/PDB each distance came from (DOI + figure/table; mark "verify on RCSB").
+#   - Whether you used a ground-state crystal geometry or a QM tetrahedral-intermediate model, and why.
+#   - The handedness/orientation that points Ser-OG at the carbonyl C and the oxyanion hole at the
+#     carbonyl O — and, for the enantioselectivity `[stretch]`, which face of a chiral ester is presented.
+#   - The acyl-chain length your pocket targets (sets esterase- vs lipase-like substrate scope).
+#
+# This file is parsed by scripts/enzyme_tools.build_theozyme() as a teaching default; once you have
+# the real geometry, encode it there (override the FunctionalGroup distances/angles) and cite it.
