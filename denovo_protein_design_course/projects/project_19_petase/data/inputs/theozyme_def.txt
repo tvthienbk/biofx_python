@@ -1,0 +1,61 @@
+# theozyme_def.txt — TEMPLATE for the PETase-like serine-hydrolase active site (Project 19)
+# =============================================================================
+# THIS IS A TEMPLATE TO FILL IN, NOT DATA. The numbers below are PLACEHOLDERS.
+# A theozyme ("theoretical enzyme") is the minimal set of catalytic functional
+# groups plus the geometry they must hold around the reaction's TRANSITION STATE.
+# You CONSTRUCT it from the literature and/or a QM transition-state calculation —
+# it is a teaching/design template, not fabricated experimental data. No kcat/Tm here.
+#
+# Build the real geometry from:
+#   - Austin et al. 2018 (PNAS) — IsPETase structure + the Ser-His-Asp triad / oxyanion hole
+#   - Tournier et al. 2020 (Nature) — engineered, thermostabilised LCC (the thermostability angle)
+#   - Lauko et al. 2025 (Science) — de novo serine hydrolases (triad + oxyanion-hole placement)
+#   - any cutinase / lipase serine-hydrolase reference (verify triad-residue identities/distances
+#     against the papers + the PDB entries; see data/README.md, all flagged "verify")
+#   - a QM transition-state model of ester hydrolysis (place the groups relative to the TETRAHEDRAL
+#     INTERMEDIATE / TS, not the ground-state ester).
+#
+# REACTION
+#   Ester hydrolysis (serine-hydrolase mechanism): His-activated Ser-OG attacks the ester carbonyl
+#   to form a tetrahedral intermediate (stabilised by the oxyanion hole), then an acyl-enzyme, which
+#   is hydrolysed by water (also His-activated) to release product and regenerate the enzyme. For PET
+#   the cleaved ester is in the polymer backbone (→ MHET / TPA + ethylene glycol).
+#
+# SUBSTRATE
+#   A PET-mimic ESTER. For fast screening use a soluble chromogenic ester such as p-nitrophenyl
+#   acetate/butyrate (the product p-nitrophenolate absorbs at ~405-410 nm). For the true substrate
+#   model a PET-derived ester (e.g. a mono/bis-(hydroxyethyl) terephthalate-like fragment, or an
+#   amorphous-PET surface ester). State which you encode and why.
+#
+# TRANSITION STATE (fill from QM/literature)
+#   ts_contact_atom : <ester carbonyl C — attacked by Ser-OG; and the carbonyl O — the developing oxyanion>
+#   ts_geometry     : <Ser-OG nucleophilic attack on the carbonyl C (Burgi-Dunitz-like approach) forming
+#                      the tetrahedral intermediate; His-NE2 abstracts the Ser-OH proton; Asp-OD orients/
+#                      protonates His; the oxyanion hole donates two H-bonds to the developing oxyanion —
+#                      describe + place the groups around the TETRAHEDRAL INTERMEDIATE, not the ester>
+#
+# CATALYTIC FUNCTIONAL GROUPS  (role | residue(s) | key atom | target distance Å | target angle deg)
+# ---------------------------------------------------------------------------------------------
+# Replace every <...> with values from literature/QM. Distances are to the TS contact point.
+# FIX ALL OF THESE during LigandMPNN sequence design (the triad AND the oxyanion-hole donors).
+#
+catalytic_ser      <SER>          <OG>   <OG-to-carbonyl-C, e.g. 2.6-3.2>   <attack angle, e.g. ~105 Burgi-Dunitz>
+catalytic_his      <HIS>          <NE2>  <NE2-to-Ser-OG/OH, e.g. 2.8-3.2>   <angle, e.g. ~120>
+catalytic_asp      <ASP|GLU>      <OD2|OE2>  <OD-to-His-ND1, e.g. 2.6-3.0>  <angle, e.g. ~120>
+oxyanion_donor_1   <backbone-NH>  <N>    <N-to-carbonyl/oxyanion-O, e.g. 2.8-3.2>   <angle, e.g. ~150>
+oxyanion_donor_2   <backbone-NH|SER-OG>  <N|OG>  <to-carbonyl/oxyanion-O, e.g. 2.8-3.2>  <angle, e.g. ~150>
+#
+# (Optional additional groups some serine hydrolases use — add if your TS model motivates them:)
+# aromatic_clamp   <TRP|TYR|PHE>  <ring>  <ring-centroid_to_substrate, e.g. 3.5-4.5>   <n/a>   # substrate-binding/orientation
+#
+# NOTES / PROVENANCE (fill these — graded)
+#   - Which paper/PDB each distance came from (DOI + figure/table; mark "verify on RCSB").
+#   - Whether you used the ground-state crystal geometry or a QM TS model, and why.
+#   - The handedness/orientation that lines Ser-OG up with the carbonyl C and the oxyanion hole with
+#     the carbonyl O; confirm His and Asp orient correctly (the charge-relay).
+#   - THERMOSTABILITY NOTE: this project ranks geometry-passing designs by an MD thermostability proxy
+#     (RMSF + melting-proxy). Record any second-shell / surface choices you make for stability, and
+#     remember the thermostability <-> activity trade-off (a too-rigid active site can be inactive).
+#
+# This file is parsed by scripts/enzyme_tools.build_theozyme() as a teaching default; once you have
+# the real geometry, encode it there (override the FunctionalGroup distances/angles) and cite it.
