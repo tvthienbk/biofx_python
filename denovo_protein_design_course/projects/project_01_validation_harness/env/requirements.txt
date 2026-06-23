@@ -1,0 +1,21 @@
+# Project 01 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # ROC/PR + composite logistic model
+tqdm
+requests
+
+# Heavy / on-demand (install via the helpers in 00_setup; pin the version you actually used):
+# transformers>=4.40   # ESMFold (EsmForProteinFolding)
+# accelerate
+# colabfold            # AlphaFold2 — prefer the official ColabFold notebook; pin the commit
+# boltz                # Boltz-2 — verify weights download; pin the version
+#
+# Record the EXACT resolved versions in your report. On Colab, capture them with the version
+# stamp cell in 00_setup.ipynb and paste into LOG.md. TM-align/Foldseek are installed as binaries
+# at the point of use (see MANUAL.md §2) — note their versions too.
