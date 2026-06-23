@@ -1,0 +1,29 @@
+# Project 17 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb and used by the notebooks/scripts.
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+requests
+
+# Heavy / on-demand (install via the helpers in 00_setup or per the MANUAL; pin the version+commit
+# you actually used — these tools change). A100 STRONGLY RECOMMENDED for the real campaign:
+#
+# RFantibody          # RFdiffusion-Ab + ProteinMPNN — https://github.com/RosettaCommons/RFantibody
+#                     #   install per the repo (conda env + weights); pin the commit. A100.
+# BoltzGen            # nanobody mode — VERIFY the current public release/repo at course start; pin it.
+# ImmuneBuilder       # NanoBodyBuilder2 / IgFold-style VHH modeling — https://github.com/oxpig/ImmuneBuilder
+# colabfold           # AF2-Multimer — prefer the official ColabFold notebook; pin the commit.
+# torch / transformers # backends for the above as required by each tool's install instructions.
+#
+# Developability: the antibody_tools.developability() heuristics need NOTHING extra (pure Python). For
+# REAL developability, install/pin the actual tools and cite them — they are NOT in this requirements
+# file because they are the student's reportable choice:
+#   - TAP (Therapeutic Antibody Profiler) / sabdab tooling (Raybould 2019)
+#   - CamSol (Sormanni 2015)
+#   - Hu-mAb / OASis / AbLang for humanness
+#
+# Record the EXACT resolved versions + tool commits in LOG.md (use the 00_setup version stamp).
