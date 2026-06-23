@@ -1,0 +1,31 @@
+# Project 03 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+requests
+
+# Heavy / on-demand (install via the helpers in 00_setup; pin the version you actually used):
+# RFdiffusion          # backbone generation — use the ColabDesign notebook; pin the commit/tag.
+#                      #   repo:  https://github.com/RosettaCommons/RFdiffusion
+#                      #   colab: https://github.com/sokrypton/ColabDesign
+#                      #   COMPUTE: T4 for SMALL batches only; full campaign needs A100 / HPC.
+# ProteinMPNN          # sequence design (bundled in ColabDesign); CPU-fine. Pin the commit.
+#                      #   repo:  https://github.com/dauparas/ProteinMPNN
+# transformers>=4.40   # ESMFold (EsmForProteinFolding) — fast self-consistency triage on T4.
+# accelerate
+# colabfold            # AlphaFold2 — trusted scRMSD on top picks; pin the commit.
+#                      #   repo:  https://github.com/sokrypton/ColabFold
+# foldseek             # novelty scoring (binary; pin the release). The PDB/AFDB database is
+#                      #   downloaded SEPARATELY and is LARGE — never committed (see data/README.md).
+#                      #   repo:  https://github.com/steineggerlab/foldseek
+# openmm               # (stretch) short MD stability check on top picks.
+#
+# Record the EXACT resolved versions in your report. On Colab, capture them with the version
+# stamp cell in 00_setup.ipynb and paste into LOG.md. RFdiffusion/ProteinMPNN/Foldseek are
+# installed from pinned upstream commits at the point of use (see MANUAL.md §2) — note their
+# versions/commits too. These tools change: run the version-verify cell in 00/02.
