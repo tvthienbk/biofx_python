@@ -1,0 +1,67 @@
+# metal_site_def.txt — TEMPLATE for the carbonic-anhydrase-style Zn metal site (Project 20)
+# =============================================================================
+# THIS IS A TEMPLATE TO FILL IN, NOT DATA. The numbers below are PLACEHOLDERS.
+# A theozyme ("theoretical enzyme") for a metalloenzyme is the catalytic METAL
+# CENTRE: the metal ion, the protein atoms that coordinate it, the reactive
+# metal-bound species, and the geometry they must hold around the TRANSITION STATE.
+# You CONSTRUCT it from carbonic-anhydrase structures and/or a QM transition-state
+# calculation — it is a teaching/design template, not fabricated experimental data.
+# No kcat, no Wilbur-Anderson units, no metal-incorporation fractions here.
+#
+# Build the real geometry from:
+#   - a human carbonic anhydrase II structure: candidates 2CAB / 3KS3 (verify on RCSB; see
+#     data/README.md — every accession is flagged "candidate — verify"). Read off the actual
+#     Zn-N(His) distances and N-Zn-N angles from the deposited coordinates.
+#   - the carbonic-anhydrase mechanism literature (the Zn-His3 site; the Zn-bound hydroxide whose
+#     pKa is lowered to ~7; the proton-shuttle His; the gated CO2 pocket).
+#   - a QM model of the Zn-OH(-) nucleophilic attack on CO2 (place the reactive hydroxide and the
+#     CO2 carbon relative to the TRANSITION STATE, not the resting state).
+#   - Hu et al. 2024 (GRACE) for how a de novo CA-style Zn site was defined and designed at scale.
+#
+# REACTION
+#   CO2 hydration (carbonic anhydrase):  CO2 + H2O  <->  HCO3-  +  H+.
+#   A Zn-bound hydroxide attacks the CO2 carbon to give a Zn-bound bicarbonate, which is displaced
+#   by water; a proton-shuttle residue (often a fourth His) relays the proton to bulk solvent.
+#
+# SUBSTRATE / READOUT
+#   True substrate: CO2 (gaseous/dissolved). Activity is classically measured in Wilbur-Anderson
+#   units (the rate of pH drop as CO2 is hydrated). For a convenient bench readout, carbonic
+#   anhydrase also has a promiscuous ESTERASE activity — hydrolysis of p-nitrophenyl acetate (pNPA)
+#   releases p-nitrophenolate (absorbs ~348-405 nm), a simple chromogenic proxy. State which you use
+#   and why; the esterase proxy and true CO2-hydration activity are correlated but NOT identical.
+#
+# METAL CENTRE  (the motif to scaffold + preserve)
+#   metal               : <ZN (Zn(II)) — the catalytic ion; Co(II) is a known active substitution>
+#   coordination_number : <4 — tetrahedral for the carbonic-anhydrase Zn-His3-OH site>
+#   reactive_species    : <Zn-bound hydroxide (OH-) — the nucleophile that attacks CO2>
+#
+# TRANSITION STATE (fill from QM/literature)
+#   ts_contact_atom : <the CO2 carbon, attacked by the Zn-OH oxygen; and the developing Zn-O-CO2 bond>
+#   ts_geometry     : <Zn-O(H) nucleophilic attack on the CO2 carbon (near-linear O...C=O approach);
+#                      the Zn lowers the hydroxide pKa; describe + place the hydroxide O and the CO2
+#                      relative to the TRANSITION STATE, not the resting Zn-water>
+#
+# COORDINATING FUNCTIONAL GROUPS  (role | residue/species | key atom | target distance A | target angle deg)
+# ---------------------------------------------------------------------------------------------
+# Replace every <...> with values from a verified CA structure / QM. Distances are Zn-to-atom.
+# FIX ALL THREE His ligands during metal-aware LigandMPNN sequence design (the coordination cage).
+#
+metal_ion        <ZN>          <ZN>    <0.0 — reference point>                 <tetrahedral, ~109.5>
+metal_ligand_1   <HIS>         <NE2|ND1>   <Zn-N, e.g. 2.0-2.2>               <N-Zn-N, ~109.5>
+metal_ligand_2   <HIS>         <NE2|ND1>   <Zn-N, e.g. 2.0-2.2>               <N-Zn-N, ~109.5>
+metal_ligand_3   <HIS>         <NE2|ND1>   <Zn-N, e.g. 2.0-2.2>               <N-Zn-N, ~109.5>
+metal_hydroxide  <HOH/OH->     <O>     <Zn-O, e.g. 1.9-2.1>                   <O-Zn-N, ~109.5>
+#
+# (Optional second-shell groups carbonic anhydrase uses — add if your model motivates them:)
+# proton_shuttle    <HIS>          <NE2>   <distance to the Zn-OH oxygen>      <...>
+# hbond_to_hydroxide <THR|gate res> <OG1>  <orients/tunes the hydroxide>       <...>
+#
+# NOTES / PROVENANCE (fill these — graded)
+#   - Which CA PDB each Zn-N distance / N-Zn-N angle came from (PDB ID + chain; mark "verify on RCSB").
+#   - Whether you used a resting-state crystal geometry or a QM TS model, and why.
+#   - How the three His ligand positions map to your scaffold numbering (you will FIX exactly these).
+#   - Whether you also placed the proton-shuttle His and/or a gate residue, and the citation for each.
+#
+# This file is parsed by scripts/enzyme_tools.build_theozyme() as a teaching default; once you have
+# the real geometry, encode it there (override the FunctionalGroup / MetalSite distances/angles) and
+# cite it. Nothing here is a measured experimental result.
