@@ -1,0 +1,16 @@
+{
+  "stability_DSF": {
+    "assay": "DSF (differential scanning fluorimetry) -> melting temperature Tm",
+    "criterion": "variant Tm not meaningfully below the parent Tm (state the margin); flag any aggregation; combine with the developability liability scan (notebook 04)"
+  },
+  "specificity_panel": {
+    "purpose": "confirm the matured variant still prefers the intended antigen (no new off-target binding)",
+    "panel": [
+      "intended antigen (target)",
+      "a closely related off-target (e.g., a paralog/family member)",
+      "an irrelevant protein (e.g., BSA) as a non-specific-binding control"
+    ],
+    "criterion": "variant binds the target but NOT the off-targets above the parent's background"
+  },
+  "decision": "keep variants that (a) improve KD vs parent, (b) hold Tm, (c) add no developability liability, and (d) stay target-specific \u2014 the rest are de-prioritised, honestly reported."
+}

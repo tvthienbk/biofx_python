@@ -1,0 +1,11 @@
+backbone_id,length,ss_bias,scrmsd,plddt,tm_to_pdb,synthetic
+EXAMPLE_DATA_alpha_L80_000,80,alpha,1.69,80.2,0.506,True
+EXAMPLE_DATA_alpha_L80_001,80,alpha,1.51,82.4,0.56,True
+EXAMPLE_DATA_alpha_L80_002,80,alpha,1.12,87.2,0.635,True
+EXAMPLE_DATA_alpha_L80_003,80,alpha,1.19,86.3,0.491,True
+EXAMPLE_DATA_alpha_L80_004,80,alpha,1.11,87.3,0.624,True
+EXAMPLE_DATA_alpha_L80_005,80,alpha,1.18,86.4,0.284,True
+EXAMPLE_DATA_alpha_L80_006,80,alpha,1.63,80.9,0.458,True
+EXAMPLE_DATA_alpha_L80_007,80,alpha,1.07,87.8,0.588,True
+EXAMPLE_DATA_alpha_L80_008,80,alpha,1.55,81.9,0.588,True
+EXAMPLE_DATA_alpha_L80_009,80,alpha,1.48,82.7,0.537,True

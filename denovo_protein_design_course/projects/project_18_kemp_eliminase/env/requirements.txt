@@ -1,0 +1,35 @@
+# Project 18 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # small analyses (geometry distributions, method comparison)
+tqdm
+requests
+
+# Heavy / on-demand (install via the helpers in 00_setup or per-tool docs; pin what you actually use):
+# --- Scaffolding (the A100-bound step) ---
+# RFdiffusion        # classic motif scaffolding (free-tier DEMO): https://github.com/RosettaCommons/RFdiffusion ; pin the commit
+# RFdiffusion2       # all-atom motif scaffolding (Dauparas 2025) — VERIFY current public release/repo at generation time
+# Riff-Diff          # theozyme→enzyme scaffolding (Schnettler 2025, Nature) — VERIFY current public release/repo at generation time
+# --- Sequence design (CPU-fast) ---
+# LigandMPNN         # ligand/TS-aware, fixes catalytic residues: https://github.com/dauparas/LigandMPNN ; pin the version
+# --- Structure prediction (catalytic-residue geometry) ---
+# colabfold          # AF2 — prefer the official ColabFold notebook; pin the commit. (ESMFold via transformers for fast triage.)
+# transformers>=4.40 # ESMFold triage (EsmForProteinFolding)
+# --- Docking + dynamics ---
+# (AutoDock) vina    # substrate fit: https://github.com/ccsb-scripps/AutoDock-Vina ; pin the version
+# openmm             # short active-site MD: https://github.com/openmm/openmm ; pin the version
+# pdbfixer           # structure prep for OpenMM
+#
+# COMPUTE REALITY (see MANUAL.md §2 + MASTER_BLUEPRINT §3): scaffolding 1000s of backbones with
+# RFdiffusion2/Riff-Diff wants an A100 (Colab Pro+ or HPC). LigandMPNN is CPU-fast; ESMFold/AF2
+# triage runs on a free T4; short MD on small systems is feasible on a T4. Free-tier path = a small
+# RFdiffusion motif-scaffolding demo + LigandMPNN + ESMFold/AF2 triage.
+#
+# Record the EXACT resolved versions in your report (capture with the 00_setup version stamp + the
+# version-verify cell in 02_generate.ipynb, and paste into LOG.md). The RFdiffusion2/Riff-Diff
+# releases change — pin a commit/tag and re-verify the upstream URL before the course starts.

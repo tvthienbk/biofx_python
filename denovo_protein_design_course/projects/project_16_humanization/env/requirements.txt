@@ -1,0 +1,34 @@
+# Project 16 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb and used by the notebooks/scripts.
+# This project is genuinely free-tier (Colab T4) friendly: humanness scoring, an IgFold/ImmuneBuilder
+# Fv model, and ΔΔG proxies are all light. No A100 required.
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+requests
+
+# Heavy / on-demand (install via the helpers in 00_setup or per the MANUAL; pin the version+commit
+# you actually used — these tools change). All are T4-friendly for this project:
+#
+# AbLang             # antibody LM — humanness + framework restoration — https://github.com/oxpig/AbLang
+#                    #   pip/repo; pin the commit. T4 / CPU fine.
+# ImmuneBuilder      # IgFold-style Fv modeling (the structure ΔΔG needs) — https://github.com/oxpig/ImmuneBuilder
+# anarci             # antibody numbering (Kabat/Chothia/IMGT) for region split + Vernier positions.
+# ProteinMPNN        # [extension] framework-position optimization (CDRs fixed) — https://github.com/dauparas/ProteinMPNN
+# torch / transformers # backends for the above as required by each tool's install instructions.
+#
+# Humanness (REPORTABLE — verify the current public release/host and pin it; NOT in this file because
+# they are the student's reportable choice):
+#   - OASis / Hu-mAb via BioPhi (Prihoda 2022) — https://github.com/Merck/BioPhi  (VERIFY host: web app vs package)
+#   - T20 humanness server (Gao 2013) — VERIFY it is still public; record the URL + access date.
+#
+# ΔΔG stability (LICENSED — install + cite the one you used; NOT pip-installable here):
+#   - FoldX (Schymkowitz 2005) — academic licence (register); BuildModel/PositionScan on the Fv model.
+#   - Rosetta cartesian_ddg (Park 2016) — academic licence.
+#   The humanization_tools.ddg_predict() heuristic needs NOTHING extra (pure Python) but is NOT a real ΔΔG.
+#
+# Record the EXACT resolved versions + tool commits/hosts in LOG.md (use the 00_setup version stamp).

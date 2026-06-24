@@ -1,0 +1,28 @@
+# Project 05 — environment (pin before tagging your release)
+# The FILTER ENGINE itself is pure-Python scoring — these are all light and T4/CPU-friendly.
+# Installed by 00_setup.ipynb.
+biopython==1.84       # Cα-RMSD (Superimposer) in filtering_pipeline.ca_rmsd
+py3Dmol==2.4.0        # optional: eyeball a PDB
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # enrichment / ROC bookkeeping in the discrimination analysis (notebook 04)
+tqdm
+requests              # version-verify cell + download_data.py
+
+# Upstream metric SOURCES (NOT needed to run the engine; they only PRODUCE the numbers it scores).
+# Install these only on Colab, in the projects that actually run the models (01/03). Pin what you used:
+# transformers>=4.40   # ESMFold (orthogonal layer source) — pin the version
+# accelerate
+# colabfold            # AlphaFold2 (self-consistency source) — prefer the official notebook; pin the commit
+# boltz                # Boltz-2 (third opinion / affinity) — verify weights download; pin the version
+# pyrosetta            # interface energy / shape complementarity (physics layer) — academic license; pin the release
+# openmm               # short MD (dynamics layer, optional) — pin the version
+#
+# Pinned upstream repos (verify they still exist — see the version-verify cell in 00_setup / 02):
+#   Boltz      https://github.com/jwohlwend/boltz
+#   ColabFold  https://github.com/sokrypton/ColabFold
+#   PyRosetta  https://www.pyrosetta.org
+# Record the EXACT resolved versions in your report. On Colab, capture them with the version stamp
+# cell in 00_setup.ipynb and paste into LOG.md.

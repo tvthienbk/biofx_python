@@ -1,0 +1,29 @@
+# Project 13 — environment (pin before tagging your release)
+# Core is light and T4/CPU-friendly (installed by 00_setup.ipynb). The AGONIST GENERATION
+# and AF2-Multimer (run PER SUBUNIT) steps are HEAVY and want an A100 — see the on-demand block below.
+biopython==1.84       # Cα-RMSD (Superimposer) in filtering_pipeline.ca_rmsd; receptor/interface parsing + subunit splitting
+py3Dmol==2.4.0        # visualize the mimetic–receptor complex
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # selectivity-profile / head-to-head bookkeeping (notebook 04)
+tqdm
+requests              # version-verify cell + download_data.py
+
+# Heavy / campaign tools — A100 strongly recommended; free T4 = small fallback only.
+# Install on Colab (Pro/A100) in the projects/sessions that actually run the models. Pin what you used.
+# These PRODUCE the metrics the shared filter scores; the filter itself needs none of them.
+#   RFdiffusion      https://github.com/RosettaCommons/RFdiffusion    # binder mode (A100 for 500-1000 backbones). Pin a commit.
+#   ColabDesign      https://github.com/sokrypton/ColabDesign         # RFdiffusion-binder + ProteinMPNN protocol. Pin a commit.
+#   BindCraft        https://github.com/martinpacesa/BindCraft        # one-shot binder hallucination (A100). Pin a commit.
+#   FreeBindCraft    https://github.com/cytokineking/FreeBindCraft     # free-tier fallback (VERIFY it still exists). Pin a commit.
+#   ColabFold        https://github.com/sokrypton/ColabFold           # AF2-Multimer (pae_interaction PER SUBUNIT). Pin a commit.
+# Optional stretch:
+#   boltz            # Boltz-2 affinity per subunit on top hits (scaffold only — relative ranking + caveats, never a fabricated K_D/EC50). Pin the version.
+#   pyrosetta        # interface energy (rosetta_dG) / shape complementarity — academic license; FreeBindCraft avoids it. Pin the release.
+#
+# NOTE: modeling against THREE receptor subunits roughly triples the AF2-Multimer cost — budget for it.
+# These tools change fast. The version-verify cell (00_setup / 02) HTTP-checks the pinned URLs still
+# exist. Record the EXACT resolved versions + commits in your report; capture them with the
+# version-stamp cell in 00_setup.ipynb and paste into LOG.md.

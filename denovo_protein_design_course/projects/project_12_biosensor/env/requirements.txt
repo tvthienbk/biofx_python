@@ -1,0 +1,30 @@
+# Project 12 — environment (pin before tagging your release)
+# Core is light and T4/CPU-friendly (installed by 00_setup.ipynb). The BINDER GENERATION,
+# AF2-Multimer, SWITCH/SCAFFOLD generation, and TWO-STATE modeling steps are HEAVY and want
+# an A100 — see the on-demand block below.
+biopython==1.84       # Cα-RMSD (Superimposer) in filtering_pipeline.ca_rmsd; target/epitope parsing
+py3Dmol==2.4.0        # visualize the binder–analyte complex and the integrated construct
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # switch-architecture benchmark + trade-off bookkeeping (notebook 04)
+tqdm
+requests              # version-verify cell + download_data.py
+
+# Heavy / campaign tools — A100 strongly recommended; free T4 = small fallback only.
+# Install on Colab (Pro/A100) in the sessions that actually run the models. Pin what you used.
+# These PRODUCE the metrics the shared filter scores + the ON/OFF proxies; the filter itself needs none.
+#   BindCraft        https://github.com/martinpacesa/BindCraft       # one-shot binder hallucination (A100). Pin a commit.
+#   FreeBindCraft    https://github.com/cytokineking/FreeBindCraft    # free-tier fallback (VERIFY it still exists). Pin a commit.
+#   RFdiffusion      https://github.com/RosettaCommons/RFdiffusion    # binder mode + scaffold/switch generation (A100). Pin a commit.
+#   ColabDesign      https://github.com/sokrypton/ColabDesign         # RFdiffusion-binder + ProteinMPNN protocol. Pin a commit.
+#   ColabFold        https://github.com/sokrypton/ColabFold           # AF2-Multimer (pae_interaction) + two-state modeling. Pin a commit.
+# Switch / split-reporter design is LITERATURE-DRIVEN (no single package): adapt published LOCKR cages
+# (Langan 2019) / de novo biosensors (Quijano-Rubio 2021) / NanoBiT split-luciferase (Dixon 2016).
+# Optional stretch:
+#   pyrosetta        # interface energy (rosetta_dG) / shape complementarity — academic license; FreeBindCraft avoids it. Pin the release.
+#
+# NOTE: these tools change fast. The version-verify cell (00_setup / 02) HTTP-checks the pinned URLs
+# still exist. Record the EXACT resolved versions + commits in your report; capture them with the
+# version-stamp cell in 00_setup.ipynb and paste into LOG.md.

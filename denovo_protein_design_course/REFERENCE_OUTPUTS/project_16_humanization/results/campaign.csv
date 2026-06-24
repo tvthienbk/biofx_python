@@ -1,0 +1,10 @@
+variant_id,method,tool,parental,human_framework,scheme,cdr1,cdr2,cdr3,n_framework_mutations,oasis_like,t20_like,germline_id,ddg_kcal_mol,synthetic,cdr3_len,n_back_mutations
+EXAMPLE_DATA_human_IGHV_teaching_placeholder_graft,cdr_graft,mock,murine_VH_teaching_placeholder,human_IGHV_teaching_placeholder,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,54.0,0.744,74.4,IGHV3-like(human),80.7,True,13,0
+EXAMPLE_DATA_human_IGHV_teaching_placeholder_graft_BM,cdr_graft,mock,murine_VH_teaching_placeholder,human_IGHV_teaching_placeholder,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,54.0,0.705,70.5,IGHV3-like(human),78.0,True,13,5
+EXAMPLE_DATA_human_IGHV1-like_teaching_graft,cdr_graft,mock,murine_VH_teaching_placeholder,human_IGHV1-like_teaching,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,53.0,0.727,72.7,IGHV3-like(human),79.95,True,13,0
+EXAMPLE_DATA_human_IGHV1-like_teaching_graft_BM,cdr_graft,mock,murine_VH_teaching_placeholder,human_IGHV1-like_teaching,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,53.0,0.689,68.9,IGHV3-like(human),77.25,True,13,5
+EXAMPLE_DATA_human_IGHV4-like_teaching_graft,cdr_graft,mock,murine_VH_teaching_placeholder,human_IGHV4-like_teaching,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,54.0,0.734,73.4,IGHV3-like(human),80.6,True,13,0
+EXAMPLE_DATA_human_IGHV4-like_teaching_graft_BM,cdr_graft,mock,murine_VH_teaching_placeholder,human_IGHV4-like_teaching,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,54.0,0.695,69.5,IGHV3-like(human),77.9,True,13,5
+EXAMPLE_DATA_resurface,resurface,mock,murine_VH_teaching_placeholder,resurfaced(parental_core),kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,4.0,0.44,44.0,murine-like,4.55,True,13,4
+EXAMPLE_DATA_parental_control,parental,mock,murine_VH_teaching_placeholder,human_IGHV_teaching_placeholder,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,,0.441,44.1,murine-like,0.0,True,13,0
+EXAMPLE_DATA_over_humanized_decoy,over_humanized_decoy,mock,murine_VH_teaching_placeholder,human_IGHV_teaching_placeholder,kabat,GYTFTNYG,INTYTGEP,ARYYGSSYWYFDV,54.0,0.744,74.4,IGHV3-like(human),80.7,True,13,0

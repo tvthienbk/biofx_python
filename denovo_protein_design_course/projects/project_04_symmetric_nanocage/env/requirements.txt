@@ -1,0 +1,29 @@
+# Project 04 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb. Enough to run every notebook
+# end-to-end on the MOCK backend with no GPU.
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+requests
+
+# Heavy / on-demand (install via 00_setup helpers; pin the version you actually used).
+# A full C3/C4/D2 campaign is GPU-heavy — A100 RECOMMENDED (see MANUAL.md §2). A free T4 realistically
+# handles only a small C3 demo; tied ProteinMPNN itself is light (CPU/T4 fine).
+#
+# RFdiffusion (symmetric mode) — clone the pinned repo; weights download on first run.
+#   https://github.com/RosettaCommons/RFdiffusion          # pin a commit/tag (verify in 00/02)
+# ColabDesign (symmetric RFdiffusion + AF2 wrappers, ProteinMPNN helpers)
+#   https://github.com/sokrypton/ColabDesign               # pin a commit/tag
+# ProteinMPNN (tied positions) — bundled with RFdiffusion/ColabDesign, or:
+#   https://github.com/dauparas/ProteinMPNN                # pin a commit/tag
+# AF2-Multimer via ColabFold (multimer mode for the assembly prediction):
+# colabfold            # pin the commit; use --model-type alphafold2_multimer_v3
+# SymDesign (symmetry definitions + docking concepts — optional, conceptual reference):
+#   https://github.com/kylemeador/symdesign                # pin a commit/tag
+#
+# Record the EXACT resolved versions in your report. On Colab, capture them with the version stamp
+# cell in 00_setup.ipynb and paste into LOG.md. RFdiffusion/ColabFold pin notes belong in LOG.md too.

@@ -1,0 +1,13 @@
+{
+  "assay": "SPR (e.g., Biacore) or BLI (e.g., Octet) kinetics: measure kon, koff -> KD",
+  "candidate_set": "results/proj15_ranked.csv survivors (SMALL, pose-maintained, developable)",
+  "baseline": "the PARENT antibody at its MEASURED literature KD (record the value + citation)",
+  "setup": "capture antibody (or Fab) on the chip/biosensor; flow the antigen as analyte in a concentration series spanning ~0.1x-10x the expected KD",
+  "readout": "global 1:1 kinetic fit -> kon, koff, KD per variant; compare KD_variant vs KD_parent",
+  "success_criterion": "KD improved (lower) vs the parent by a pre-registered margin (state it), with an acceptable fit and no avidity artifacts (use monovalent Fab if needed)",
+  "controls": {
+    "positive_baseline_WT": "the WT parent antibody \u2014 anchors the KD scale; every variant compared to it",
+    "negative_destabilizing_decoy": "a deliberately destabilizing variant \u2014 EXPECTED to lose affinity/stability; proves the assay detects a loss, not just noise"
+  },
+  "expectation": "MOST predicted improvers will NOT validate. Report the hit rate (N improved / N tested), not just the best clone."
+}

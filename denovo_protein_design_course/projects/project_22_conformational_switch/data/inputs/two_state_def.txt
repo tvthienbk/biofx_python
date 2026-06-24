@@ -1,0 +1,58 @@
+# two_state_def.txt — TEMPLATE (Project 22, Conformational-Switch / Multi-State Protein)
+# ----------------------------------------------------------------------------------------
+# This is a TEMPLATE you fill in during Phase 0 (Week 2). It defines the ONE design problem
+# your whole campaign is built around: two conformational STATES that a SINGLE sequence must
+# adopt, and the TRIGGER that toggles between them. Notebook 02 reads the topology + trigger
+# from here (you transcribe them into the notebook config); the two backbones for state A and
+# state B are GENERATED in notebook 02, they are not downloaded.
+#
+# Everything in <angle brackets> is a PLACEHOLDER to replace. The values shown are a worked
+# EXAMPLE (a pH-triggered hinge) — overwrite them with YOUR design. Do not present the example
+# numbers as a real design.
+# ----------------------------------------------------------------------------------------
+
+design_name:        <my_switch_v1>
+author:             <your name>
+date:               <YYYY-MM-DD>
+
+# --- The trigger -------------------------------------------------------------------------
+# One of: pH | ligand | light | temperature  (matches multistate_tools.TRIGGERS)
+trigger:            pH
+trigger_detail:     <e.g. "a His-rich interface protonates below ~pH 6, breaking a salt bridge
+                    that holds state A, so the protein relaxes into state B above pH 6">
+
+# --- Topology ----------------------------------------------------------------------------
+# One of: hinge | helical_bundle | loop_to_helix | domain_swap  (matches TOPOLOGIES)
+topology:           hinge
+length:             100        # residues (same length in both states for a tied multi-state design)
+
+# --- State A (e.g. the "OFF" / closed / dark state) --------------------------------------
+state_A.label:      <OFF / closed / dark>
+state_A.description:<one or two sentences: what does state A look like, and what holds it together?>
+state_A.backbone:   <generated in nb02 -> results/two_state/state_A.pdb  (leave blank until generated)>
+
+# --- State B (e.g. the "ON" / open / lit state) -----------------------------------------
+state_B.label:      <ON / open / lit>
+state_B.description:<one or two sentences: how does state B differ from A, and what stabilizes it?>
+state_B.backbone:   <generated in nb02 -> results/two_state/state_B.pdb  (leave blank until generated)>
+
+# --- The switch hypothesis (one sentence, testable) -------------------------------------
+hypothesis:         <e.g. "one designed sequence will fold to state A below pH 6 and to state B
+                    above pH 6, reported by a FRET change of >= X%">
+
+# --- Success criteria (measurable; you will be graded on these being explicit) ----------
+success.per_state_scrmsd:   "< 2.0 A vs each state's backbone (foldability of BOTH states)"
+success.per_state_plddt:    ">= 85 mean (both states)"
+success.energy_gap:         "within the switchable band (close enough to toggle, distinct enough
+                            to define OFF/ON) — see multistate_tools.SWITCH_GAP_{MIN,MAX}"
+success.readout:            "<the assay that proves the switch, e.g. FRET / protease accessibility
+                            / SAXS — defined with controls in notebook 05>"
+
+# --- Controls you will need (mandatory) -------------------------------------------------
+control.positive:   <a known/conservative single-state design expected to fold to one state>
+control.negative:   <a sequence locked into ONE state (no switch) — the 'always-OFF'/'always-ON' control>
+control.unrelated:  <an unrelated natural protein of similar size>
+
+# --- Responsible research --------------------------------------------------------------
+# Low dual-use: smart biomaterials / allosteric sensors / logic gates, basic science.
+# Re-evaluate under MASTER_BLUEPRINT.md §7 if the switch is later coupled to a functional payload.

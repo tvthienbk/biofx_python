@@ -1,0 +1,12 @@
+{
+  "positive_baseline_WT": {
+    "design_id": "CONTROL_WT_parent",
+    "role": "the un-mutated parent at its MEASURED KD \u2014 the reference for every variant"
+  },
+  "negative_destabilizing_decoy": {
+    "design_id": "CONTROL_destabilizing_decoy",
+    "mutation": "Y32P",
+    "role": "EXPECTED to lose affinity/stability \u2014 proves the assay detects a loss; never reported as a maturation candidate"
+  },
+  "specificity_panel": "target vs a related off-target vs an irrelevant protein (see dsf_and_specificity.json)"
+}

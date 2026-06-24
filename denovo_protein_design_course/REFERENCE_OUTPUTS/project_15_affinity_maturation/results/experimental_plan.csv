@@ -1,0 +1,7 @@
+item,purpose,est_cost_usd,weeks
+Gene synthesis of the variant set,express ranked candidates + controls,EXAMPLE_DATA,EXAMPLE_DATA
+Transient expression + purification,produce Fab/IgG variants,EXAMPLE_DATA,EXAMPLE_DATA
+Recombinant antigen (biotinylated),SPR/BLI ligand/analyte,EXAMPLE_DATA,EXAMPLE_DATA
+SPR/BLI instrument time,kinetics: kon/koff -> KD,EXAMPLE_DATA,EXAMPLE_DATA
+DSF reagents + plate reader time,Tm stability,EXAMPLE_DATA,EXAMPLE_DATA
+Specificity-panel proteins,off-target counter-screen,EXAMPLE_DATA,EXAMPLE_DATA

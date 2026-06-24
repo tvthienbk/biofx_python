@@ -1,0 +1,17 @@
+switch_id,family,reporter,scaffold,closed_plddt,open_plddt,toggle_score,background_leak,synthetic
+EXAMPLE_DATA_switch_split_reporter_000,split_reporter,split_luciferase,rfdiff_scaffold,96.0,90.0,0.68,0.38,True
+EXAMPLE_DATA_switch_split_reporter_001,split_reporter,split_luciferase,rfdiff_scaffold,85.0,92.0,0.53,0.13,True
+EXAMPLE_DATA_switch_split_reporter_002,split_reporter,split_luciferase,rfdiff_scaffold,92.0,86.0,0.36,0.06,True
+EXAMPLE_DATA_switch_split_reporter_003,split_reporter,split_luciferase,rfdiff_scaffold,77.0,70.0,0.77,0.12,True
+EXAMPLE_DATA_switch_split_reporter_004,split_reporter,split_luciferase,rfdiff_scaffold,77.0,74.0,0.53,0.33,True
+EXAMPLE_DATA_switch_split_reporter_005,split_reporter,split_luciferase,rfdiff_scaffold,85.0,78.0,0.85,0.2,True
+EXAMPLE_DATA_switch_split_reporter_006,split_reporter,split_luciferase,rfdiff_scaffold,86.0,96.0,0.66,0.21,True
+EXAMPLE_DATA_switch_split_reporter_007,split_reporter,split_luciferase,rfdiff_scaffold,94.0,87.0,0.3,0.15,True
+EXAMPLE_DATA_switch_lockr_000,lockr,,lockr_cage,88.0,79.0,0.56,0.16,True
+EXAMPLE_DATA_switch_lockr_001,lockr,,lockr_cage,91.0,83.0,0.87,0.12,True
+EXAMPLE_DATA_switch_lockr_002,lockr,,lockr_cage,92.0,93.0,0.56,0.06,True
+EXAMPLE_DATA_switch_lockr_003,lockr,,lockr_cage,87.0,96.0,0.47,0.22,True
+EXAMPLE_DATA_switch_lockr_004,lockr,,lockr_cage,79.0,81.0,0.31,0.21,True
+EXAMPLE_DATA_switch_lockr_005,lockr,,lockr_cage,81.0,88.0,0.85,0.3,True
+EXAMPLE_DATA_switch_lockr_006,lockr,,lockr_cage,90.0,72.0,0.3,0.25,True
+EXAMPLE_DATA_switch_lockr_007,lockr,,lockr_cage,82.0,92.0,0.66,0.31,True

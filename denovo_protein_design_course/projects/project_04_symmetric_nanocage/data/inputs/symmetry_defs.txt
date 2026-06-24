@@ -1,0 +1,31 @@
+# symmetry_defs.txt — example symmetric-contig definitions (TEACHING SCAFFOLD)
+#
+# These are example RFdiffusion *symmetric-mode* definitions to build intuition for how a point
+# group + a per-subunit contig define a symmetric assembly. They are NOT production configs:
+# verify the exact flag/contig syntax against your pinned RFdiffusion release (the symmetric-mode
+# flags have changed across versions). One line per design family.
+#
+# Columns (whitespace-separated):
+#   name        symmetry  subunit_len  n_subunits  example_contig   notes
+#
+# - symmetry    : point group. C3/C4 = cyclic (single ring); D2 = dihedral (two stacked C2 rings).
+# - subunit_len : residues in the ASYMMETRIC UNIT (one subunit). Symmetry replicates this.
+# - n_subunits  : oligomeric order the assembly must close into (C3→3, C4→4, D2→4).
+# - example_contig : a per-subunit contig (length-length); symmetry operators replicate it.
+#
+# The campaign in notebook 02 generates the three families below. Tied ProteinMPNN then assigns
+# ONE sequence shared across all symmetry-related subunits (see scripts/sym_tools.tied_positions).
+
+# name        symmetry  subunit_len  n_subunits  example_contig  notes
+c3_small      C3        60           3           60-60           starter cyclic trimer (T4-feasible demo)
+c3_medium     C3        100          3           100-100         larger C3; A100 recommended at scale
+c4_small      C4        70           4           70-70           cyclic tetramer (square ring)
+c4_medium     C4        110          4           110-110         larger C4; A100 recommended at scale
+d2_small      D2        65           4           65-65           dihedral tetramer (two C2 rings, D2)
+d2_medium     D2        100          4           100-100         larger D2; A100 recommended at scale
+
+# Stretch (notebook 05): higher point groups make multi-subunit CAGES, not just rings.
+# Tetrahedral assemblies need a two-component or single-component design protocol and far more
+# compute — treat as an MSc-track extension and verify the protocol on an A100/HPC.
+# name        symmetry  subunit_len  n_subunits  example_contig  notes
+tetra_stretch  T        120          12          120-120         STRETCH: tetrahedral cage (A100/HPC; verify protocol)

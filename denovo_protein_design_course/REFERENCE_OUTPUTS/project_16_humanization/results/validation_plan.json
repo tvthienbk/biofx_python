@@ -1,0 +1,32 @@
+{
+  "goal": "Test whether humanized variants RETAIN antigen binding and stability vs the parental.",
+  "variants_under_test": "results/proj16_ranked.csv survivors (grafts, back-mutated grafts, resurfaced)",
+  "expression": {
+    "format": "Fab or full IgG (mammalian, e.g. ExpiCHO/HEK293) for binding/DSF; scFv/Fab in E. coli periplasm acceptable for early ELISA triage",
+    "note": "express each variant + BOTH controls under identical conditions"
+  },
+  "assays": [
+    {
+      "name": "ELISA",
+      "measures": "qualitative antigen binding (retained vs lost)",
+      "readout": "OD450 titration vs antigen-coated plate; EC50 estimate"
+    },
+    {
+      "name": "SPR or BLI",
+      "measures": "quantitative affinity (K_D, k_on, k_off)",
+      "readout": "kinetics vs immobilized antigen; compare K_D to the parental"
+    },
+    {
+      "name": "DSF (thermal shift)",
+      "measures": "stability (melting temperature Tm)",
+      "readout": "SYPRO-Orange Tm; compare Tm to the parental (humanization often lowers Tm)"
+    }
+  ],
+  "decision": "KEEP variants that retain binding (K_D within an agreed fold of parental) AND keep Tm within an agreed margin; these balance humanness and developability.",
+  "controls": {
+    "positive_parental": "the PARENTAL non-human antibody \u2014 defines retained-binding (best K_D) and the stability ceiling (Tm); every humanized variant is judged against it",
+    "negative_over_humanized_decoy": "the OVER-HUMANIZED DECOY (humanized including the Vernier zone, no rescue) \u2014 expected to LOSE binding and/or Tm; proves the assay detects over-humanization",
+    "negative_isotype": "an irrelevant isotype-matched antibody \u2014 no specific antigen binding"
+  },
+  "expectation": "Humanization commonly costs some affinity/stability; Vernier back-mutated and resurfaced variants should recover more than the over-humanized decoy."
+}

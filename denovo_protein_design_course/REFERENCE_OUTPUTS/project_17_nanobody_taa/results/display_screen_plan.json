@@ -1,0 +1,21 @@
+{
+  "format": "yeast surface display (Aga2p fusion) of the filtered VHH pool",
+  "pool_source": "results/proj17_ranked.csv survivors (design_type='antibody')",
+  "antigen_reagent": "recombinant TAA ectodomain (e.g., HER2 ECD), biotinylated, fluorophore-streptavidin",
+  "stages": [
+    "1. Synthesize the filtered VHH pool as an oligo library; clone into the display vector.",
+    "2. Transform yeast; induce surface display; confirm display level (anti-tag stain).",
+    "3. FACS round 1: select cells binding labeled TAA above a no-antigen gate.",
+    "4. FACS rounds 2-3: increase stringency (lower antigen conc.) to enrich higher-affinity VHHs.",
+    "5. Deep-sequence enriched pools; track per-design enrichment vs the input pool.",
+    "6. Recover top VHHs; express solubly (see downstream format); confirm binding by SPR/BLI."
+  ],
+  "readout": "FACS enrichment + NGS frequency; confirmatory SPR/BLI KD on recovered clones",
+  "controls": {
+    "positive": "a KNOWN anti-TAA nanobody (e.g., a published anti-HER2 VHH) spiked into the pool",
+    "negative_irrelevant_antigen": "screen the same pool against an irrelevant antigen (e.g., BSA/a non-TAA protein) \u2014 winners must NOT enrich there",
+    "negative_unrelated_binder": "an unrelated/non-binding VHH (display control, should not enrich)"
+  },
+  "specificity_gate": "counter-screen enriched VHHs against the receptor-family panel (EGFR/HER3/HER4) \u2014 keep target-selective clones",
+  "expectation": "LOW de novo hit rate; the screen is what turns a designed pool into real binders."
+}

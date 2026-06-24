@@ -1,0 +1,21 @@
+# Project 23 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tqdm
+requests
+
+# Heavy / on-demand (install via 00_setup helpers; pin the version you actually used):
+# LigandMPNN  (nucleic-acid-aware sequence design)  — github.com/dauparas/LigandMPNN  (pin a commit)
+# RFdiffusion (scaffold near the nucleic acid)        — github.com/RosettaCommons/RFdiffusion
+# ColabDesign                                          — github.com/sokrypton/ColabDesign
+# boltz       (protein-NA complex modeling)            — github.com/jwohlwend/boltz
+# colabfold   (AF2 complex modeling)                   — github.com/sokrypton/ColabFold
+#
+# Record the EXACT resolved versions in your report (capture with the version-stamp cell in
+# 00_setup.ipynb). RFdiffusion/LigandMPNN campaigns realistically want an A100 (see MANUAL.md §2).

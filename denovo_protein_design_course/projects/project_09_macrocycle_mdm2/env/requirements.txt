@@ -1,0 +1,31 @@
+# Project 09 — environment (pin before tagging your release)
+# Core is light and T4/CPU-friendly (installed by 00_setup.ipynb). The PEPTIDE/MACROCYCLE GENERATION
+# and the AF2/Boltz-2 scoring steps are heavier — see the on-demand block below.
+# COMPUTE NOTE: peptides are small, so Boltz-2 affinity on small inputs is OK on a free T4; a full
+# MACROCYCLE CAMPAIGN prefers Colab Pro. See MANUAL.md §2 and MASTER_BLUEPRINT.md §3.
+biopython==1.84       # Cα-RMSD (Superimposer) in filtering_pipeline.ca_rmsd; cleft/interface parsing
+py3Dmol==2.4.0        # visualize the peptide–MDM2 cleft complex
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # linear-vs-cyclic / peptide-vs-protein benchmark bookkeeping (notebook 04)
+tqdm
+requests              # version-verify cell + download_data.py
+
+# Heavy / campaign tools — peptides are small (T4 often enough); a macrocycle campaign prefers Pro.
+# Install on Colab in the sessions that actually run the models. Pin what you used.
+# These PRODUCE the metrics the shared filter scores; the filter itself needs none of them.
+#   BoltzGen      (peptide-anything / macrocycle-anything)  # VERIFY the current public release + URL — it is moving. Pin it.
+#   EvoBind2      https://github.com/patrickbryant1/EvoBind  # MSA-free cyclic/linear peptide binder design (VERIFY). Pin a commit.
+#   boltz         https://github.com/jwohlwend/boltz         # Boltz-2 structure + AFFINITY (relative ranking only — never a K_D). Pin the version.
+#   ColabFold     https://github.com/sokrypton/ColabFold     # AF2 / AF2-Multimer pAE on the peptide–MDM2 complex. Pin a commit.
+# Optional (peptide-vs-protein MODALITY FOIL — the Project-06 mini-binder arm, A100):
+#   BindCraft     https://github.com/martinpacesa/BindCraft  # one-shot mini-binder foil (A100). Pin a commit.
+#   RFdiffusion   https://github.com/RosettaCommons/RFdiffusion  # binder-mode foil (A100). Pin a commit.
+# Conceptual reference (no pip): RFpeptides — cyclic-peptide design concepts (read the paper; verify availability).
+#
+# NOTE: these tools change fast, and the public BoltzGen interface in particular is moving — the
+# version-verify cell (00_setup / 02) HTTP-checks the pinned URLs still exist. Record the EXACT
+# resolved versions + commits in your report; capture them with the version-stamp cell in
+# 00_setup.ipynb and paste into LOG.md.

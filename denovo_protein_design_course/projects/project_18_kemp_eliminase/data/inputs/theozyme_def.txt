@@ -1,0 +1,46 @@
+# theozyme_def.txt — TEMPLATE for the Kemp-eliminase active site (Project 18)
+# =============================================================================
+# THIS IS A TEMPLATE TO FILL IN, NOT DATA. The numbers below are PLACEHOLDERS.
+# A theozyme ("theoretical enzyme") is the minimal set of catalytic functional
+# groups plus the geometry they must hold around the reaction's TRANSITION STATE.
+# You CONSTRUCT it from the literature and/or a QM transition-state calculation —
+# it is a teaching/design template, not fabricated experimental data.
+#
+# Build the real geometry from:
+#   - Röthlisberger et al. 2008 (Nature) — first computational Kemp eliminases (KE07 ...)
+#   - the KE07 / KE70 / HG3 designed-enzyme lineage (verify the catalytic-residue identities/
+#     distances against the papers + the PDB entries; see data/README.md, all flagged "verify")
+#   - a QM transition-state model of 5-nitrobenzisoxazole ring opening (place the functional
+#     groups relative to the TS, not the ground state).
+#
+# REACTION
+#   Kemp elimination: base-catalysed ring opening of a benzisoxazole. A catalytic base abstracts
+#   the C3 proton; concertedly the N–O bond breaks, opening the ring to a 2-hydroxy-arylnitrile.
+#
+# SUBSTRATE
+#   5-nitrobenzisoxazole  (chromogenic — the product 2-hydroxy-5-nitrobenzonitrile / nitrophenolate
+#   absorbs in the UV-vis, giving a simple plate-reader kinetic readout; no natural counterpart).
+#
+# TRANSITION STATE (fill from QM/literature)
+#   ts_contact_atom : <C3 of the benzisoxazole — the proton being abstracted>
+#   ts_geometry     : <deprotonation at C3 concerted with N–O cleavage; developing negative charge
+#                      delocalised onto the phenolate/nitro oxygens — describe + place the groups>
+#
+# CATALYTIC FUNCTIONAL GROUPS  (role | residue(s) | key atom | target distance Å | target angle deg)
+# ---------------------------------------------------------------------------------------------
+# Replace every <...> with values from literature/QM. Distances are to the TS contact point.
+#
+catalytic_base   <ASP|GLU>   <OD2|OE2>   <distance_to_C3_H, e.g. 2.6-3.0>   <angle, e.g. ~120>
+pi_stack         <TRP|TYR|PHE>  <ring>   <ring-centroid_to_substrate, e.g. 3.5-4.0>   <n/a>
+h_bond_donor     <SER|THR|backbone-NH>  <OG|N>  <distance_to_phenolate/nitro_O, e.g. 2.8-3.2>  <angle, e.g. ~150>
+#
+# (Optional additional groups some Kemp designs use — add if your TS model motivates them:)
+# secondary_hbond  <ASN|GLN|TYR>  <...>  <...>  <...>
+#
+# NOTES / PROVENANCE (fill these — graded)
+#   - Which paper/PDB each distance came from (DOI + figure/table; mark "verify on RCSB").
+#   - Whether you used the ground-state crystal geometry or a QM TS model, and why.
+#   - The handedness/orientation that points the base at C3 and the donor at the leaving O.
+#
+# This file is parsed by scripts/enzyme_tools.build_theozyme() as a teaching default; once you have
+# the real geometry, encode it there (override the FunctionalGroup distances/angles) and cite it.

@@ -1,0 +1,11 @@
+construct_id,off_target,expected_dynamic_range,note
+EXAMPLE_DATA_rfdiffusion_0098__EXAMPLE_DATA_switch_lockr_000,RELATED_BIOMARKER_X,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_rfdiffusion_0098__EXAMPLE_DATA_switch_lockr_000,UNRELATED_PROTEIN_Y,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_rfdiffusion_0137__EXAMPLE_DATA_switch_lockr_000,RELATED_BIOMARKER_X,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_rfdiffusion_0137__EXAMPLE_DATA_switch_lockr_000,UNRELATED_PROTEIN_Y,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_bindcraft_0032__EXAMPLE_DATA_switch_split_reporter_000,RELATED_BIOMARKER_X,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_bindcraft_0032__EXAMPLE_DATA_switch_split_reporter_000,UNRELATED_PROTEIN_Y,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_bindcraft_0028__EXAMPLE_DATA_switch_split_reporter_000,RELATED_BIOMARKER_X,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_bindcraft_0028__EXAMPLE_DATA_switch_split_reporter_000,UNRELATED_PROTEIN_Y,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_rfdiffusion_0098__EXAMPLE_DATA_switch_split_reporter_000,RELATED_BIOMARKER_X,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy
+EXAMPLE_DATA_rfdiffusion_0098__EXAMPLE_DATA_switch_split_reporter_000,UNRELATED_PROTEIN_Y,1.0,off-target must NOT switch (specificity control) — SYNTHETIC proxy

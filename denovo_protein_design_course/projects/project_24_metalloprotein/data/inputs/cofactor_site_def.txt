@@ -1,0 +1,59 @@
+# cofactor_site_def.txt — TEMPLATE for the cofactor-coordination site (Project 24)
+# =============================================================================
+# THIS IS A TEMPLATE TO FILL IN, NOT DATA. The numbers below are PLACEHOLDERS.
+# A cofactor-site spec is the minimal description of the bound cofactor plus the
+# protein ligands that coordinate it and the geometry they must hold (metal-ligand
+# distances + ligand-metal-ligand angles). You CONSTRUCT it from a VERIFIED
+# reference structure and/or the literature — it is a teaching/design template,
+# NOT fabricated experimental data, and there are NO real spectra in this file.
+#
+# DEFAULT SCHEME (this template): BIS-HIS HEME — heme b (Fe-protoporphyrin IX) held by
+# two axial histidine imidazole nitrogens. This is the canonical b-type-cytochrome
+# electron-transfer motif and the classic target of designed heme proteins
+# (DeGrado "maquettes"; Baker-lab de novo heme proteins). Other schemes you can pick
+# (see scripts/cofactor_tools.COORDINATION_SCHEMES): His/Met heme (c-type), proximal-His
+# O2-binding heme (myoglobin-like), [4Fe-4S]-4Cys (ferredoxin), Cys2His2 structural Zn.
+#
+# Build the real geometry from (ALL flagged "candidate — verify on RCSB"):
+#   - heme: myoglobin 1MBN (proximal His F8) and/or a b-type cytochrome (bis-His) — read the
+#     Fe-Nepsilon2(His) distances and the His-Fe-His axial angle off the structure.
+#   - [4Fe-4S]: a ferredoxin structure — read the Fe-Sgamma(Cys) distances and the CxxCxxC...C motif.
+#   - Optionally a QM model of the metal centre (spin/oxidation state matters for the geometry).
+#
+# COFACTOR
+#   cofactor   : <heme_b | heme_c | [4Fe-4S] | Zn(II)>
+#   metal      : <FE | ZN>
+#   function   : <electron transfer | O2/CO binding | structural | artificial metalloenzyme>
+#   readout    : <UV-vis Soret band (heme) | EPR (Fe-S / high-spin heme) | metal titration>
+#
+# COORDINATION SCHEME (fill from the verified structure)
+#   scheme     : <bis-His | His/Met | proximal-His + open distal | 4-Cys cubane | Cys2His2>
+#   note       : <e.g. axial His usually on opposite helices of a 4-helix bundle for bis-His heme;
+#                 the distal pocket stays open for O2 in the myoglobin-like scheme; c-type heme is
+#                 COVALENTLY attached via a CXXCH motif>
+#
+# COORDINATING GROUPS  (role | residue | key atom | target metal-ligand dist A | ligand-metal-ligand angle deg)
+# ---------------------------------------------------------------------------------------------
+# Replace every <...> with values from a verified structure / literature. Distances are metal-to-ligand-atom.
+#
+axial_ligand_1   <HIS>   <NE2|ND1>   <Fe-N dist, e.g. 2.0-2.2>   <His-Fe-His angle, e.g. ~180>
+axial_ligand_2   <HIS>   <NE2|ND1>   <Fe-N dist, e.g. 2.0-2.2>   <His-Fe-His angle, e.g. ~180>
+#
+# (For a [4Fe-4S] ferredoxin instead, use four Cys:)
+# cluster_ligand_1  <CYS>  <SG>  <Fe-S dist, e.g. ~2.3>  <n/a>
+# cluster_ligand_2  <CYS>  <SG>  <~2.3>  <n/a>
+# cluster_ligand_3  <CYS>  <SG>  <~2.3>  <n/a>
+# cluster_ligand_4  <CYS>  <SG>  <~2.3>  <n/a>
+#
+# (Optional distal-pocket residue for the O2-binding scheme — H-bonds bound O2:)
+# distal_hbond    <HIS|GLN>  <NE2|NE2>  <to bound O2, e.g. ~2.8-3.2>  <...>
+#
+# NOTES / PROVENANCE (fill these — graded)
+#   - Which structure/PDB each distance/angle came from (PDB ID + chain/residue; mark "verify on RCSB").
+#   - The oxidation/spin state you assumed (Fe(II)/Fe(III); high/low spin) and why — it changes geometry.
+#   - The expected SPECTROSCOPIC signature you would predict (NOT a measured value): which readout
+#     (Soret for heme; EPR for Fe-S / high-spin heme) and what a coordination change would do to it,
+#     stated qualitatively. Do NOT write a fabricated wavelength/g-value as if measured.
+#
+# This file is parsed by scripts/cofactor_tools.build_cofactor_spec() as a teaching default; once you
+# have the real geometry, encode it there (override the CoordinatingGroup distances/angles) and cite it.

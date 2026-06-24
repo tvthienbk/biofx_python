@@ -1,0 +1,7 @@
+selector,kind,n_selected,frac_selected,precision,enrichment,recall
+scrmsd <= 2.0,single-metric,155,0.323,0.361,2.04,0.659
+plddt >= 80.0,single-metric,208,0.433,0.231,1.3,0.565
+pae_interaction <= 10.0,single-metric,161,0.335,0.292,1.65,0.553
+rosetta_dG <= -30.0,single-metric,192,0.4,0.276,1.56,0.624
+shape_complementarity >= 0.6,single-metric,265,0.552,0.211,1.19,0.659
+ML model (top 40% by P(success)),ML-composite,192,0.4,0.385,2.18,0.871

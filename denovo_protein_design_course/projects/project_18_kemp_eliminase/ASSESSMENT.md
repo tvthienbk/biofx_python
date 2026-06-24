@@ -1,0 +1,53 @@
+# Project 18 — Assessment
+
+Instantiated from the shared rubric (`MASTER_BLUEPRINT.md §5`). Same six criteria the field uses;
+weighting may be adjusted by the instructor.
+
+## Grading philosophy (read this first)
+You are graded on **rigor, reasoning, and reproducibility — not on whether the enzyme works.** De
+novo enzyme hit rates are low (often <1% active without directed evolution), and **catalytic-geometry
+preservation does not guarantee activity**. A meticulous campaign that honestly reports a low hit
+rate, a clean catalytic-geometry-preservation analysis, a sound scaffolding-method comparison, and a
+rigorous kinetic-assay plan with the catalytic-dead-mutant control earns an A. A single
+nice-looking design with no controls, no geometry accounting, and no hit-rate reporting does not.
+
+## Weighting (mapped to deliverables)
+| Component | Weight | Deliverable | What "excellent" looks like for Project 18 |
+|-----------|--------|-------------|--------------------------------------------|
+| Problem definition & literature | 10% | D0 | Correct Kemp mechanism + theozyme reasoning; measurable success criteria; honest hit-rate history |
+| Pipeline execution & reproducibility | 20% | D1–D3, repo | theozyme→scaffold→LigandMPNN(fixed)→geometry runs end-to-end; seeds + tool versions logged |
+| Design campaign rigor (diversity, controls, logging) | 15% | D2 | 1000s of backbones; catalytic residues provably fixed; full design log (config+seed+path) |
+| Filtering, benchmarking & critical analysis | 20% | D3 | enzyme-cutoff filter; catalytic-geometry preservation rate; scaffolding-method comparison; honest hit rate |
+| Validation plan (controls, feasibility, cost) | 15% | D4 | UV kcat/KM assay; controls incl. catalytic→Ala dead mutant, heat-killed, empty vector; costed/timed |
+| Final report & reproducible release | 10% | D5 | Thesis-quality; `v1.0` tag others can rerun; "geometry ≠ activity" stated plainly |
+| Oral defense | 10% | D5 | Can defend the theozyme geometry, the method choice, and own the campaign's limits |
+
+## Rubric (applied to the final report)
+| Criterion | Excellent (A) | Good (B) | Adequate (C) | Poor (D/F) |
+|-----------|---------------|----------|--------------|-----------|
+| Problem definition | Specific, motivated, measurable; correct Kemp/theozyme understanding | Clear but generic | Vague | Absent / mechanism wrong |
+| Tool selection & justification | Reasoned (why LigandMPNN fixes catalytic residues; why RFdiffusion2 vs Riff-Diff) | Correct, thin justification | No rationale | Wrong tools |
+| Computational execution | Complete; catalytic residues fixed; multi-layer filter; reproducible | Complete, basic | Incomplete | Non-working |
+| Critical analysis | Honest hit rate + geometry-preservation rate + "geometry ≠ activity" + failure forensics | Some limitations noted | Superficial | None |
+| Experimental plan | UV kinetics, catalytic-dead + heat-killed + empty-vector controls, costed, timed | Reasonable, gaps | Vague | Absent / no controls |
+| Communication | Clear prose, professional figures (survival funnel, geometry distribution, method comparison), logical flow | Mostly clear | Disorganized | Poor |
+
+## Deliverable specifications
+- **D0 (Wk 2):** 1-page problem statement (measurable criteria + controls) + printout of the
+  reproduced theozyme hello-world (functional-group spec + a mock scaffold record).
+- **D1 (Wk 6):** repo link; minimal theozyme→scaffold→LigandMPNN(fixed)→geometry pipeline on a small
+  batch with catalytic-geometry RMSD computed; `LOG.md` started.
+- **D2 (Wk 12):** full design pool (scaffolds + sequences, catalytic residues fixed) + `design_log`
+  (every config+seed+output) + 3–4 page interim report.
+- **D3 (Wk 18):** `03`/`04` notebooks + figures: survival-at-each-layer, catalytic-geometry
+  preservation rate, scaffolding-method comparison, ranked top candidates, honest hit-rate table.
+- **D4 (Wk 22):** validation report (geometry + docking + MD on the <96 set) + kinetic-assay plan
+  (UV kcat/KM) with controls (catalytic→Ala dead mutant, heat-killed, empty vector), costed + timed.
+- **D5 (Wk 24):** thesis chapter + slides + `v1.0` tagged release with archived environment
+  (+ directed-evolution plan for hits).
+
+## Reproducibility gate (pass/fail overlay)
+Independent of grade band: if a grader cannot rerun `00_setup` → `03_filter_and_rank` on the **mock
+backend** and reproduce the survival-at-each-layer figure from the tagged release, the
+reproducibility components are capped at "Adequate" until fixed. State exact tool versions + seeds in
+the report, and clearly mark every synthetic/`EXAMPLE_DATA` number as such.

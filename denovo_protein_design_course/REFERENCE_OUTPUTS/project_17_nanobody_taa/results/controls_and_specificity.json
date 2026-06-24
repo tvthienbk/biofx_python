@@ -1,0 +1,15 @@
+{
+  "controls": {
+    "positive_control": "known anti-TAA VHH (e.g., a published anti-HER2 nanobody) \u2014 must enrich",
+    "negative_irrelevant_antigen": "same pool vs BSA / a non-TAA protein \u2014 winners must NOT enrich",
+    "negative_unrelated_binder": "non-binding/unrelated VHH on display \u2014 must NOT enrich"
+  },
+  "specificity_panel": [
+    "HER2 (target)",
+    "EGFR",
+    "HER3",
+    "HER4"
+  ],
+  "specificity_decision": "keep VHHs that bind the target but not the relatives (target-selective)",
+  "biparatopic_stretch": "pair a non-overlapping VHH with an overlapping one for a biparatopic/bispecific construct (stronger avidity / dual-epitope engagement)  [stretch]"
+}
