@@ -1,0 +1,20 @@
+# Project 14 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tqdm
+requests
+
+# Heavy / on-demand (install via 00_setup helpers; pin the version you actually used):
+# RFantibody     — github.com/RosettaCommons/RFantibody  (A100; VERIFY it still exists)
+# BoltzGen       — verify the current public release at course start (nanobody mode) [extension]
+# ImmuneBuilder  — github.com/oxpig/ImmuneBuilder         (NanoBodyBuilder2 / IgFold CDR geometry)
+# colabfold      — github.com/sokrypton/ColabFold         (AF2-Multimer; pae_interaction)
+#
+# Record the EXACT resolved versions in your report (version-stamp cell in 00_setup.ipynb).
+# Real RFantibody campaigns realistically want an A100 (see MANUAL.md §2); free T4 = tiny demo only.
