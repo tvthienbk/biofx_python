@@ -1,0 +1,31 @@
+# Project 22 — environment (pin before tagging your release)
+# Core (light, T4-friendly) — installed by 00_setup.ipynb; the mock backend runs with just these
+biopython==1.84
+py3Dmol==2.4.0
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+requests
+
+# Heavy / on-demand — the real multi-state campaign (install via the helpers in 00_setup; the full
+# workflow realistically needs an A100/HPC, NOT a free T4). Pin the EXACT versions you actually used:
+# --- two state backbones (RFdiffusion x2) ---
+# rfdiffusion           # RosettaCommons/RFdiffusion — pin the commit; verify with 02's version-verify cell
+# colabdesign           # sokrypton/ColabDesign — RFdiffusion + (tied) ProteinMPNN driver; pin the commit
+# --- multi-state sequence design ---
+# proteinmpnn           # dauparas/ProteinMPNN — run in tied/multi-state mode; pin the commit
+# --- predict BOTH states from one sequence ---
+# colabfold             # AlphaFold2 — predict each state; prefer the official notebook; pin the commit
+# transformers>=4.40    # ESMFold (EsmForProteinFolding) — fast orthogonal per-state triage
+# accelerate
+# --- (extension) transition-plausibility MD ---
+# openmm                # openmm/openmm — short A<->B MD; pin a release; verify with the version-verify cell
+# pdbfixer             # structure prep for OpenMM
+#
+# Record the EXACT resolved versions in your report. On Colab, capture them with the version
+# stamp cell in 00_setup.ipynb and paste into LOG.md. TM-align/Foldseek are installed as binaries
+# at the point of use (see MANUAL.md §2) — note their versions too.
+# COMPUTE HONESTY: two RFdiffusion runs + multi-state MPNN + AF2 x2-per-design + MD = A100/HPC.
+# A free T4 runs only a small fallback (short backbones, few designs, ESMFold triage).
