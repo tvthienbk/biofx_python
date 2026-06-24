@@ -1,0 +1,34 @@
+# Project 25 — environment (pin before tagging your release)
+# Core is light and T4/CPU-friendly (installed by 00_setup.ipynb). The ML SUCCESS PREDICTOR runs
+# entirely on this light stack (no GPU). The DESIGN CAMPAIGN tools are HEAVY and want an A100 —
+# see the on-demand block below; which ones you install depends on YOUR chosen design_type.
+biopython==1.84       # Cα-RMSD (Superimposer) in filtering_pipeline.ca_rmsd; target/structure parsing
+py3Dmol==2.4.0        # visualize designs / complexes
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn          # THE SUCCESS PREDICTOR (LogisticRegression / RandomForest, CV, ROC-AUC) — notebook 04
+tqdm
+requests              # version-verify cell + download_data.py
+
+# Optional ML estimator (light; CPU-fine). ml_predictor.py falls back to RandomForest if absent.
+#   xgboost             # gradient-boosted success predictor (model="xgb"); pin the version you used.
+#   Upstream: https://github.com/dmlc/xgboost   (pin a release tag; verify it still exists)
+#   scikit-learn upstream: https://github.com/scikit-learn/scikit-learn  (pin a release tag; verify)
+
+# Heavy / campaign tools — A100 strongly recommended; free T4 = small fallback only. Install on
+# Colab (Pro/A100) in the sessions that actually run the models. Install only the ones YOUR
+# design_type needs. These PRODUCE the metrics the shared filter + the predictor consume.
+#   RFdiffusion      https://github.com/RosettaCommons/RFdiffusion    # backbones / binder mode (A100). Pin a commit.
+#   RFdiffusion2 / Riff-Diff                                           # enzyme scaffolding (verify the public release). Pin.
+#   BindCraft        https://github.com/martinpacesa/BindCraft        # one-shot binders (A100). Pin a commit.
+#   FreeBindCraft    https://github.com/cytokineking/FreeBindCraft     # free-tier fallback (VERIFY it exists). Pin.
+#   RFantibody                                                         # antibody/nanobody design (A100). Pin a commit.
+#   ColabDesign      https://github.com/sokrypton/ColabDesign          # RFdiffusion-binder + ProteinMPNN/LigandMPNN. Pin.
+#   ColabFold        https://github.com/sokrypton/ColabFold            # AF2 / AF2-Multimer (pae_interaction). Pin a commit.
+#   boltz            # Boltz-2 prediction/affinity (orthogonal feature). Pin the version.
+#
+# NOTE: these tools change fast. The version-verify cell (00_setup / 02) HTTP-checks the pinned URLs
+# (scikit-learn, XGBoost, and your campaign tools) still exist. Record the EXACT resolved versions +
+# commits in your report; capture them with the version-stamp cell in 00_setup.ipynb and paste into LOG.md.
