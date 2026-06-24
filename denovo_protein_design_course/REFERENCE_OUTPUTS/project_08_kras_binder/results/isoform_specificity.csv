@@ -1,0 +1,9 @@
+design_id,paradigm,kras_pae,best_offtarget_pae,selectivity_gap,selective
+EXAMPLE_DATA_rfdiffusion_0079,rfdiffusion,5.0,8.0,3.0,True
+EXAMPLE_DATA_rfdiffusion_0167,rfdiffusion,8.0,8.0,0.0,False
+EXAMPLE_DATA_rfdiffusion_0007,rfdiffusion,12.0,10.0,-2.0,False
+EXAMPLE_DATA_rfdiffusion_0161,rfdiffusion,16.0,6.0,-10.0,False
+EXAMPLE_DATA_bindcraft_0028,bindcraft,11.0,9.0,-2.0,False
+EXAMPLE_DATA_rfdiffusion_0042,rfdiffusion,10.0,8.0,-2.0,False
+EXAMPLE_DATA_rfdiffusion_0051,rfdiffusion,10.0,4.0,-6.0,False
+EXAMPLE_DATA_rfdiffusion_0131,rfdiffusion,8.0,5.0,-3.0,False

@@ -1,0 +1,8 @@
+item,purpose,est_cost_usd,weeks
+VHH oligo library synthesis,display pool,EXAMPLE_DATA,EXAMPLE_DATA
+Display vector + yeast strain,surface display,EXAMPLE_DATA,EXAMPLE_DATA
+Recombinant TAA ECD (biotinylated),FACS antigen,EXAMPLE_DATA,EXAMPLE_DATA
+FACS sorting time,3 selection rounds,EXAMPLE_DATA,EXAMPLE_DATA
+NGS of enriched pools,track enrichment,EXAMPLE_DATA,EXAMPLE_DATA
+Express + purify top clones,VHH-Fc / SPR,EXAMPLE_DATA,EXAMPLE_DATA
+SPR/BLI KD on recovered clones,confirm binding,EXAMPLE_DATA,EXAMPLE_DATA

@@ -1,0 +1,6 @@
+{
+  "positive_parental": "PARENTAL non-human antibody \u2014 best binding + highest Tm; the benchmark every humanized variant is compared against (retained binding = within agreed fold).",
+  "negative_over_humanized_decoy": "OVER-HUMANIZED DECOY \u2014 humanized including the Vernier zone with no back-mutation rescue; expected to LOSE binding and/or Tm. If it still binds well, your assay (or your Vernier set) needs revisiting.",
+  "negative_isotype": "irrelevant isotype-matched antibody \u2014 controls for non-specific binding.",
+  "why_decoy": "Without an over-humanized decoy you cannot show your assay distinguishes 'human enough' from 'too humanized to bind' \u2014 the central risk of this project."
+}

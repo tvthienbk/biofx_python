@@ -1,0 +1,3 @@
+design_id,sequence,design_type,designed_pdb,predicted_pdb,plddt,plddt_catalytic,pae_interaction,scrmsd,scrmsd_orthogonal,tm_to_pdb,solubility,rosetta_dG,shape_complementarity,md_rmsd,catalytic_geom_rmsd,extra,layers_passed,score,notes
+nat_trpcage,,monomer,,,90.0,,5.0,,,,,,,,,{'outcome': 'success'},0,1.4833,['failed L1 self-consistency']
+nat_ubiquitin,,monomer,,,56.0,,11.0,,,,,,,,,{'outcome': 'success'},0,0.6433,['failed L1 self-consistency']

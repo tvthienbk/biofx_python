@@ -1,0 +1,3 @@
+id,design_type,tool,plddt,pae,ptm,runtime_s,ok,error,outcome
+nat_ubiquitin,monomer,mock,56.0,11.0,0.56,0.0,True,"SYNTHETIC — mock backend, not a real prediction",success
+nat_trpcage,monomer,mock,90.0,5.0,0.9,0.0,True,"SYNTHETIC — mock backend, not a real prediction",success

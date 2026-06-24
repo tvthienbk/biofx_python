@@ -1,0 +1,9 @@
+item,purpose,est_cost_usd,weeks
+Gene synthesis (variants + 2 controls),express each variant,EXAMPLE_DATA,EXAMPLE_DATA
+Mammalian expression (ExpiCHO/HEK),Fab/IgG production,EXAMPLE_DATA,EXAMPLE_DATA
+Protein A/affinity purification,purify antibodies,EXAMPLE_DATA,EXAMPLE_DATA
+Recombinant antigen (ELISA/SPR),binding assays,EXAMPLE_DATA,EXAMPLE_DATA
+ELISA reagents + plates,binding triage,EXAMPLE_DATA,EXAMPLE_DATA
+SPR/BLI chip time,K_D vs parental,EXAMPLE_DATA,EXAMPLE_DATA
+"DSF (SYPRO-Orange, qPCR plate)",Tm stability,EXAMPLE_DATA,EXAMPLE_DATA
+(Real run) humanness tools / T-cell epitope predictor,immunogenicity risk,EXAMPLE_DATA,EXAMPLE_DATA

@@ -1,0 +1,12 @@
+{
+  "summary": "Per-variant residual-immunogenicity risk, paired with the retained-binding result.",
+  "inputs": "results/immunogenicity_risk_summary.csv (humanness band + residual non-human FR content)",
+  "axes": [
+    "humanness band (OASis/Hu-mAb/T20 \u2014 use the REAL tools to report)",
+    "residual non-human framework residues (count + exposed?)",
+    "non-human residues re-introduced by Vernier back-mutations (exposed positions are higher risk)",
+    "predicted T-cell epitopes (add a real predictor, e.g. NetMHCII-style, for a reportable claim)"
+  ],
+  "honesty": "Humanness scores correlate with, but do NOT prove, low ADA. Only a clinical immunogenicity assessment is definitive. Pair every humanness claim with the assay result.",
+  "decision_rule": "Prefer the MOST human variant that still PASSES the binding (ELISA/SPR) and stability (DSF) bars vs the parental. Do not chase humanness past loss of function."
+}

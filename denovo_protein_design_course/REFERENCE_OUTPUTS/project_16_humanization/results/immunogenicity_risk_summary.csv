@@ -1,0 +1,10 @@
+variant_id,method,humanness,residual_nonhuman_fr,vernier_back_mutations,immunogenicity_risk_band
+EXAMPLE_DATA_human_IGHV_teaching_placeholder_graft,cdr_graft,0.744,54.0,0,LOW
+EXAMPLE_DATA_over_humanized_decoy,over_humanized_decoy,0.744,54.0,0,LOW
+EXAMPLE_DATA_human_IGHV4-like_teaching_graft,cdr_graft,0.734,54.0,0,LOW
+EXAMPLE_DATA_human_IGHV1-like_teaching_graft,cdr_graft,0.727,53.0,0,LOW
+EXAMPLE_DATA_human_IGHV_teaching_placeholder_graft_BM,cdr_graft,0.705,54.0,5,LOW
+EXAMPLE_DATA_human_IGHV4-like_teaching_graft_BM,cdr_graft,0.695,54.0,5,MODERATE
+EXAMPLE_DATA_human_IGHV1-like_teaching_graft_BM,cdr_graft,0.689,53.0,5,MODERATE
+EXAMPLE_DATA_parental_control,parental,0.441,,0,HIGH
+EXAMPLE_DATA_resurface,resurface,0.44,4.0,4,HIGH
